@@ -62,11 +62,11 @@
 		90079A9D2998ED7700CF86D2 /* ImageFeed */ = {
 			isa = PBXGroup;
 			children = (
-				90A9249C29B40B4B00893085 /* ImageList */,
 				90079A9E2998ED7700CF86D2 /* AppDelegate.swift */,
 				90079AA02998ED7700CF86D2 /* SceneDelegate.swift */,
-				90A924AA29B464FC00893085 /* ProfileViewController.swift */,
-				9097BC3F29B6980A007428F3 /* SingleImageViewController.swift */,
+				90A9249C29B40B4B00893085 /* ImageList */,
+				90E06C8929B89FC200210B35 /* Profile */,
+				90E06C8A29B89FD400210B35 /* SingleImage */,
 				90079AA42998ED7700CF86D2 /* Main.storyboard */,
 				90079AA72998ED7800CF86D2 /* Assets.xcassets */,
 				90079AA92998ED7800CF86D2 /* LaunchScreen.storyboard */,
@@ -82,6 +82,22 @@
 				90A9249A29B40B2800893085 /* ImageListCell.swift */,
 			);
 			path = ImageList;
+			sourceTree = "<group>";
+		};
+		90E06C8929B89FC200210B35 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				90A924AA29B464FC00893085 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		90E06C8A29B89FD400210B35 /* SingleImage */ = {
+			isa = PBXGroup;
+			children = (
+				9097BC3F29B6980A007428F3 /* SingleImageViewController.swift */,
+			);
+			path = SingleImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
