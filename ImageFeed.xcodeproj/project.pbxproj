@@ -16,6 +16,7 @@
 		9097BC4029B6980A007428F3 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9097BC3F29B6980A007428F3 /* SingleImageViewController.swift */; };
 		90A9249B29B40B2800893085 /* ImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A9249A29B40B2800893085 /* ImageListCell.swift */; };
 		90A924AB29B464FC00893085 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A924AA29B464FC00893085 /* ProfileViewController.swift */; };
+		90EA0B9D29D99356000A2BB9 /* UIColor+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA0B9C29D99356000A2BB9 /* UIColor+Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9097BC3F29B6980A007428F3 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		90A9249A29B40B2800893085 /* ImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCell.swift; sourceTree = "<group>"; };
 		90A924AA29B464FC00893085 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		90EA0B9C29D99356000A2BB9 /* UIColor+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Color.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				90A9249C29B40B4B00893085 /* ImageList */,
 				90E06C8929B89FC200210B35 /* Profile */,
 				90E06C8A29B89FD400210B35 /* SingleImage */,
+				90EA0B9B29D9933F000A2BB9 /* Colors */,
 				90079AA42998ED7700CF86D2 /* Main.storyboard */,
 				90079AA72998ED7800CF86D2 /* Assets.xcassets */,
 				90079AA92998ED7800CF86D2 /* LaunchScreen.storyboard */,
@@ -98,6 +101,14 @@
 				9097BC3F29B6980A007428F3 /* SingleImageViewController.swift */,
 			);
 			path = SingleImage;
+			sourceTree = "<group>";
+		};
+		90EA0B9B29D9933F000A2BB9 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				90EA0B9C29D99356000A2BB9 /* UIColor+Color.swift */,
+			);
+			path = Colors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +185,7 @@
 				90079AA32998ED7700CF86D2 /* ImagesListViewController.swift in Sources */,
 				90A9249B29B40B2800893085 /* ImageListCell.swift in Sources */,
 				90A924AB29B464FC00893085 /* ProfileViewController.swift in Sources */,
+				90EA0B9D29D99356000A2BB9 /* UIColor+Color.swift in Sources */,
 				90079A9F2998ED7700CF86D2 /* AppDelegate.swift in Sources */,
 				9097BC4029B6980A007428F3 /* SingleImageViewController.swift in Sources */,
 				90079AA12998ED7700CF86D2 /* SceneDelegate.swift in Sources */,

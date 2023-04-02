@@ -34,7 +34,9 @@ final class SingleImageViewController: UIViewController {
         guard let image else { return }
         let activityController = UIActivityViewController(
             activityItems: [image],
-            applicationActivities: nil)
+            applicationActivities: nil
+        )
+        present(activityController, animated: true)
     }
 }
 
