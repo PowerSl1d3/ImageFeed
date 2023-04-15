@@ -19,6 +19,8 @@ final class SingleImageViewController: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var scrollView: UIScrollView!
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         view.backgroundColor = UIColor(named: "YP Black")
         scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 1.25

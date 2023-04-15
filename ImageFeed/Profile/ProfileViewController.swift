@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
     let avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "Avatar"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController {
     let profileTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .boldSystemFont(ofSize: 23)
+        label.font = UIFont(name: "YSDisplay-Bold", size: 23)
         label.textColor = Color.ypWhite
         label.text = "Екатерина Новикова"
 
@@ -39,7 +39,7 @@ class ProfileViewController: UIViewController {
     let profileSubtitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 13)
+        label.font = UIFont(name: "YSDisplay-Medium", size: 13)
         label.textColor = Color.ypGray
         label.text = "@ekaterina_nov"
 
@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController {
     let profileDescriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 13)
+        label.font = UIFont(name: "YSDisplay-Medium", size: 13)
         label.textColor = Color.ypWhite
         label.text = "Hello, world!"
 
@@ -57,6 +57,8 @@ class ProfileViewController: UIViewController {
     }()
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+
         view.addSubview(avatarImageView)
         view.addSubview(exitButton)
         view.addSubview(profileTitleLabel)
