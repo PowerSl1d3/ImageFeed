@@ -9,6 +9,7 @@ import UIKit
 
 final class Color: UIColor {
     static let ypWhite = UIColor(named: "YP White")
+    static let ypBlack = UIColor(named: "YP Black")
     static let ypGray = UIColor(named: "YP Gray")
     static let ypRed = UIColor(named: "YP Red")
 }

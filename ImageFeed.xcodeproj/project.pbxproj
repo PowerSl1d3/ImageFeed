@@ -13,6 +13,9 @@
 		90079AA62998ED7700CF86D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90079AA42998ED7700CF86D2 /* Main.storyboard */; };
 		90079AA82998ED7800CF86D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90079AA72998ED7800CF86D2 /* Assets.xcassets */; };
 		90079AAB2998ED7800CF86D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90079AA92998ED7800CF86D2 /* LaunchScreen.storyboard */; };
+		9068A2AF29EED9E7006E19F8 /* WebViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9068A2AE29EED9E7006E19F8 /* WebViewControllerDelegate.swift */; };
+		908841FD29EEC118001C4372 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908841FC29EEC118001C4372 /* WebViewController.swift */; };
+		908841FF29EEC1FA001C4372 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908841FE29EEC1FA001C4372 /* AuthViewController.swift */; };
 		9097BC4029B6980A007428F3 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9097BC3F29B6980A007428F3 /* SingleImageViewController.swift */; };
 		90A9249B29B40B2800893085 /* ImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A9249A29B40B2800893085 /* ImageListCell.swift */; };
 		90A924AB29B464FC00893085 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A924AA29B464FC00893085 /* ProfileViewController.swift */; };
@@ -31,6 +34,9 @@
 		90079AA72998ED7800CF86D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90079AAA2998ED7800CF86D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90079AAC2998ED7800CF86D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9068A2AE29EED9E7006E19F8 /* WebViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewControllerDelegate.swift; sourceTree = "<group>"; };
+		908841FC29EEC118001C4372 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		908841FE29EEC1FA001C4372 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		9097BC3F29B6980A007428F3 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		90A9249A29B40B2800893085 /* ImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCell.swift; sourceTree = "<group>"; };
 		90A924AA29B464FC00893085 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +81,7 @@
 				90A9249C29B40B4B00893085 /* ImageList */,
 				90E06C8929B89FC200210B35 /* Profile */,
 				90E06C8A29B89FD400210B35 /* SingleImage */,
+				908841FB29EEC0FC001C4372 /* Auth */,
 				90EA0B9B29D9933F000A2BB9 /* Colors */,
 				90CFC93529EAD8AE004260A4 /* Constants */,
 				90F5E4C229EAA56000F288D6 /* Resources */,
@@ -83,6 +90,16 @@
 				90079AAC2998ED7800CF86D2 /* Info.plist */,
 			);
 			path = ImageFeed;
+			sourceTree = "<group>";
+		};
+		908841FB29EEC0FC001C4372 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				908841FE29EEC1FA001C4372 /* AuthViewController.swift */,
+				908841FC29EEC118001C4372 /* WebViewController.swift */,
+				9068A2AE29EED9E7006E19F8 /* WebViewControllerDelegate.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		90A9249C29B40B4B00893085 /* ImageList */ = {
@@ -218,6 +235,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				90079AA32998ED7700CF86D2 /* ImagesListViewController.swift in Sources */,
+				908841FD29EEC118001C4372 /* WebViewController.swift in Sources */,
+				908841FF29EEC1FA001C4372 /* AuthViewController.swift in Sources */,
+				9068A2AF29EED9E7006E19F8 /* WebViewControllerDelegate.swift in Sources */,
 				90A9249B29B40B2800893085 /* ImageListCell.swift in Sources */,
 				90A924AB29B464FC00893085 /* ProfileViewController.swift in Sources */,
 				90EA0B9D29D99356000A2BB9 /* UIColor+Color.swift in Sources */,
