@@ -23,10 +23,22 @@ final class WebViewController: UIViewController {
 
         var urlComponents = URLComponents(string: UnsplashAuthorizeURLString)
         urlComponents?.queryItems = [
-            URLQueryItem(name: "client_id", value: Constants.accessKey),
-            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
-            URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: Constants.accessScope)
+            URLQueryItem(
+                name: UnsplashAPIGlobalConstants.QueryKeys.clientId,
+                value: UnsplashAPIGlobalConstants.QueryValues.accessKey
+            ),
+            URLQueryItem(
+                name: UnsplashAPIGlobalConstants.QueryKeys.redirectURI,
+                value: UnsplashAPIGlobalConstants.QueryValues.redirectURI
+            ),
+            URLQueryItem(
+                name: UnsplashAPIGlobalConstants.QueryKeys.responseType,
+                value: UnsplashAPIGlobalConstants.QueryValues.responseType
+            ),
+            URLQueryItem(
+                name: UnsplashAPIGlobalConstants.QueryKeys.scope,
+                value: UnsplashAPIGlobalConstants.QueryValues.accessScope
+            )
         ]
 
         guard let url = urlComponents?.url else { return }
