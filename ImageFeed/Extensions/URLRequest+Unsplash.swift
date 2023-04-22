@@ -23,9 +23,9 @@ extension URLRequest {
         path: String,
         httpMethod: String,
         baseURL: URL = UnsplashAPIGlobalConstants.defaultBaseURL
-    ) -> URLRequest? {
+    ) throws -> URLRequest {
         guard let url = URL(string: path, relativeTo: baseURL) else {
-            return nil
+            throw(URLRequestError.requestCreateError)
         }
 
         var request = URLRequest(url: url)
@@ -34,17 +34,28 @@ extension URLRequest {
     }
 }
 
-func authTokenRequest(code: String) -> URLRequest? {
-    guard let url = URL(string: "https://unsplash.com") else { return nil }
+func authTokenRequest(code: String) throws -> URLRequest {
+    guard let url = URL(string: "https://unsplash.com") else {
+        throw(URLRequestError.requestCreateError)
+    }
 
-    return URLRequest.makeHTTPRequest(
-        path: "/oauth/token"
-        + "?\(UnsplashAPIGlobalConstants.QueryKeys.clientId)=\(UnsplashAPIGlobalConstants.QueryValues.accessKey)"
-        + "&&\(UnsplashAPIGlobalConstants.QueryKeys.cleintSecret)=\(UnsplashAPIGlobalConstants.QueryValues.secretKey)"
-        + "&&\(UnsplashAPIGlobalConstants.QueryKeys.redirectURI)=\(UnsplashAPIGlobalConstants.QueryValues.redirectURI)"
-        + "&&\(UnsplashAPIGlobalConstants.QueryKeys.code)=\(code)"
-        + "&&\(UnsplashAPIGlobalConstants.QueryKeys.grantType)=\(UnsplashAPIGlobalConstants.QueryValues.authorizationCode)",
+    let queryParams = [
+        UnsplashAPIGlobalConstants.QueryKeys.clientId: UnsplashAPIGlobalConstants.QueryValues.accessKey,
+        UnsplashAPIGlobalConstants.QueryKeys.cleintSecret: UnsplashAPIGlobalConstants.QueryValues.secretKey,
+        UnsplashAPIGlobalConstants.QueryKeys.redirectURI: UnsplashAPIGlobalConstants.QueryValues.redirectURI,
+        UnsplashAPIGlobalConstants.QueryKeys.code: code,
+        UnsplashAPIGlobalConstants.QueryKeys.grantType: UnsplashAPIGlobalConstants.QueryValues.authorizationCode
+    ]
+
+    return try URLRequest.makeHTTPRequest(
+        path: addQueryParams(queryParams, toRelativePath: "/oauth/token"),
         httpMethod: HTTPMethods.POST,
         baseURL: url
     )
+}
+
+fileprivate func addQueryParams(_ queryParams: [String: String], toRelativePath path: String) -> String {
+    path + "?" + queryParams.map { (key, value) in
+        key + "=" + value
+    }.joined(separator: "&&")
 }

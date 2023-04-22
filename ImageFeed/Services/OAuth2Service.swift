@@ -23,8 +23,12 @@ final class OAuth2Service {
         with code: String,
         completion: @escaping (Result<String, Error>) -> Void
     ) {
-        guard let request = authTokenRequest(code: code) else {
-            completion(.failure(URLRequestError.requestCreateError))
+        let request: URLRequest
+        do {
+            request = try authTokenRequest(code: code)
+        } catch {
+            completion(.failure(error))
+
             return
         }
 
