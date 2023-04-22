@@ -12,7 +12,7 @@ final class OAuth2TokenStorage {
         static let token = "token"
     }
 
-    let userDefault = UserDefaults.standard
+    private let userDefault = UserDefaults.standard
 
     var token: String? {
         get {
