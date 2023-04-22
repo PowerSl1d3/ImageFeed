@@ -27,7 +27,7 @@
 		90A9249B29B40B2800893085 /* ImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A9249A29B40B2800893085 /* ImageListCell.swift */; };
 		90A924AB29B464FC00893085 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A924AA29B464FC00893085 /* ProfileViewController.swift */; };
 		90CFC93729EAD8D5004260A4 /* UnsplashAPIGlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC93629EAD8D5004260A4 /* UnsplashAPIGlobalConstants.swift */; };
-		90EA0B9D29D99356000A2BB9 /* UIColor+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA0B9C29D99356000A2BB9 /* UIColor+Color.swift */; };
+		90EA0B9D29D99356000A2BB9 /* UIColor+ImageFeedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA0B9C29D99356000A2BB9 /* UIColor+ImageFeedColors.swift */; };
 		90F5E4CA29EAA8D600F288D6 /* YS Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F5E4C829EAA8D600F288D6 /* YS Display-Medium.ttf */; };
 		90F5E4CB29EAA8D600F288D6 /* YS Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F5E4C929EAA8D600F288D6 /* YS Display-Bold.ttf */; };
 /* End PBXBuildFile section */
@@ -55,7 +55,7 @@
 		90A9249A29B40B2800893085 /* ImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCell.swift; sourceTree = "<group>"; };
 		90A924AA29B464FC00893085 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		90CFC93629EAD8D5004260A4 /* UnsplashAPIGlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPIGlobalConstants.swift; sourceTree = "<group>"; };
-		90EA0B9C29D99356000A2BB9 /* UIColor+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Color.swift"; sourceTree = "<group>"; };
+		90EA0B9C29D99356000A2BB9 /* UIColor+ImageFeedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ImageFeedColors.swift"; sourceTree = "<group>"; };
 		90F5E4C829EAA8D600F288D6 /* YS Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Medium.ttf"; sourceTree = "<group>"; };
 		90F5E4C929EAA8D600F288D6 /* YS Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,18 +90,20 @@
 		90079A9D2998ED7700CF86D2 /* ImageFeed */ = {
 			isa = PBXGroup;
 			children = (
-				90079A9E2998ED7700CF86D2 /* AppDelegate.swift */,
-				90079AA02998ED7700CF86D2 /* SceneDelegate.swift */,
-				9072227729F39EFD00413039 /* Splash */,
-				90A9249C29B40B4B00893085 /* ImageList */,
-				90E06C8929B89FC200210B35 /* Profile */,
-				90E06C8A29B89FD400210B35 /* SingleImage */,
+				9072227B29F3B73800413039 /* ApplicationLifecycleDelegates */,
+				9072227729F39EFD00413039 /* SplashViewController */,
+				90A9249C29B40B4B00893085 /* ImageListViewController */,
+				90E06C8929B89FC200210B35 /* ProfileViewController */,
+				90E06C8A29B89FD400210B35 /* SingleImageViewController */,
+				908841FB29EEC0FC001C4372 /* AuthViewController */,
+				9072227829F3B62C00413039 /* WebViewController */,
+				9072227929F3B64700413039 /* Models */,
 				9082649D29F1862C00701B58 /* Storages */,
 				9082649429F164D900701B58 /* Services */,
-				908841FB29EEC0FC001C4372 /* Auth */,
 				90EA0B9B29D9933F000A2BB9 /* Colors */,
 				90CFC93529EAD8AE004260A4 /* Constants */,
 				90F5E4C229EAA56000F288D6 /* Resources */,
+				9072227A29F3B67900413039 /* Extensions */,
 				90079AA42998ED7700CF86D2 /* Main.storyboard */,
 				90079AA92998ED7800CF86D2 /* LaunchScreen.storyboard */,
 				90079AAC2998ED7800CF86D2 /* Info.plist */,
@@ -109,20 +111,53 @@
 			path = ImageFeed;
 			sourceTree = "<group>";
 		};
-		9072227729F39EFD00413039 /* Splash */ = {
+		9072227729F39EFD00413039 /* SplashViewController */ = {
 			isa = PBXGroup;
 			children = (
 				9072227329F394C500413039 /* SplashViewController.swift */,
 			);
-			path = Splash;
+			path = SplashViewController;
+			sourceTree = "<group>";
+		};
+		9072227829F3B62C00413039 /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				908841FC29EEC118001C4372 /* WebViewController.swift */,
+				9068A2AE29EED9E7006E19F8 /* WebViewControllerDelegate.swift */,
+			);
+			path = WebViewController;
+			sourceTree = "<group>";
+		};
+		9072227929F3B64700413039 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9082649229F1636600701B58 /* OAuthTokenResponseBody.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9072227A29F3B67900413039 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9082649729F16A5200701B58 /* URLRequest+Unsplash.swift */,
+				9082649929F16BBE00701B58 /* URLSession+Unsplash.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9072227B29F3B73800413039 /* ApplicationLifecycleDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				90079A9E2998ED7700CF86D2 /* AppDelegate.swift */,
+				90079AA02998ED7700CF86D2 /* SceneDelegate.swift */,
+			);
+			path = ApplicationLifecycleDelegates;
 			sourceTree = "<group>";
 		};
 		9082649429F164D900701B58 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				9082649529F164F000701B58 /* OAuth2Service.swift */,
-				9082649729F16A5200701B58 /* URLRequest+Unsplash.swift */,
-				9082649929F16BBE00701B58 /* URLSession+Unsplash.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -135,25 +170,22 @@
 			path = Storages;
 			sourceTree = "<group>";
 		};
-		908841FB29EEC0FC001C4372 /* Auth */ = {
+		908841FB29EEC0FC001C4372 /* AuthViewController */ = {
 			isa = PBXGroup;
 			children = (
 				908841FE29EEC1FA001C4372 /* AuthViewController.swift */,
 				9072227529F396CB00413039 /* AuthViewControllerDelegate.swift */,
-				908841FC29EEC118001C4372 /* WebViewController.swift */,
-				9068A2AE29EED9E7006E19F8 /* WebViewControllerDelegate.swift */,
-				9082649229F1636600701B58 /* OAuthTokenResponseBody.swift */,
 			);
-			path = Auth;
+			path = AuthViewController;
 			sourceTree = "<group>";
 		};
-		90A9249C29B40B4B00893085 /* ImageList */ = {
+		90A9249C29B40B4B00893085 /* ImageListViewController */ = {
 			isa = PBXGroup;
 			children = (
 				90079AA22998ED7700CF86D2 /* ImagesListViewController.swift */,
 				90A9249A29B40B2800893085 /* ImageListCell.swift */,
 			);
-			path = ImageList;
+			path = ImageListViewController;
 			sourceTree = "<group>";
 		};
 		90CFC93529EAD8AE004260A4 /* Constants */ = {
@@ -164,26 +196,26 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		90E06C8929B89FC200210B35 /* Profile */ = {
+		90E06C8929B89FC200210B35 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
 				90A924AA29B464FC00893085 /* ProfileViewController.swift */,
 			);
-			path = Profile;
+			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
-		90E06C8A29B89FD400210B35 /* SingleImage */ = {
+		90E06C8A29B89FD400210B35 /* SingleImageViewController */ = {
 			isa = PBXGroup;
 			children = (
 				9097BC3F29B6980A007428F3 /* SingleImageViewController.swift */,
 			);
-			path = SingleImage;
+			path = SingleImageViewController;
 			sourceTree = "<group>";
 		};
 		90EA0B9B29D9933F000A2BB9 /* Colors */ = {
 			isa = PBXGroup;
 			children = (
-				90EA0B9C29D99356000A2BB9 /* UIColor+Color.swift */,
+				90EA0B9C29D99356000A2BB9 /* UIColor+ImageFeedColors.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -290,7 +322,7 @@
 				9082649C29F1861400701B58 /* OAuth2TokenStorage.swift in Sources */,
 				90A9249B29B40B2800893085 /* ImageListCell.swift in Sources */,
 				90A924AB29B464FC00893085 /* ProfileViewController.swift in Sources */,
-				90EA0B9D29D99356000A2BB9 /* UIColor+Color.swift in Sources */,
+				90EA0B9D29D99356000A2BB9 /* UIColor+ImageFeedColors.swift in Sources */,
 				90079A9F2998ED7700CF86D2 /* AppDelegate.swift in Sources */,
 				9097BC4029B6980A007428F3 /* SingleImageViewController.swift in Sources */,
 				9082649829F16A5200701B58 /* URLRequest+Unsplash.swift in Sources */,

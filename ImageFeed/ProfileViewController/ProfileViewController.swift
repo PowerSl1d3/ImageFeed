@@ -19,7 +19,7 @@ final class ProfileViewController: UIViewController {
     let exitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = Color.ypRed
+        button.tintColor = .ypRed
         button.setImage(UIImage(systemName: "ipad.and.arrow.forward"), for: .normal)
         button.contentMode = .scaleAspectFit
 
@@ -30,7 +30,7 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "YSDisplay-Bold", size: 23)
-        label.textColor = Color.ypWhite
+        label.textColor = .ypWhite
         label.text = "Екатерина Новикова"
 
         return label
@@ -40,7 +40,7 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "YSDisplay-Medium", size: 13)
-        label.textColor = Color.ypGray
+        label.textColor = .ypGray
         label.text = "@ekaterina_nov"
 
         return label
@@ -50,7 +50,7 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "YSDisplay-Medium", size: 13)
-        label.textColor = Color.ypWhite
+        label.textColor = .ypWhite
         label.text = "Hello, world!"
 
         return label
