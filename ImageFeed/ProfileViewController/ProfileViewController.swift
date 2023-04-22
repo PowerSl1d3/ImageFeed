@@ -9,7 +9,7 @@ import UIKit
 
 final class ProfileViewController: UIViewController {
     let avatarImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "Avatar"))
+        let imageView = UIImageView(image: UIImage(named: "AnonymAvatar"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
 

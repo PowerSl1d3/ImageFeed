@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "tab_profile_active.png",
+      "filename" : "TabProfileActive.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "TabProfileActive@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "TabProfileActive@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

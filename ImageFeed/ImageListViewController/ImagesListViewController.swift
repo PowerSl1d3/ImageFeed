@@ -87,7 +87,7 @@ private extension ImagesListViewController {
         guard let image else { return }
 
         let evenIndexPath = indexPath.row % 2 == 0
-        let likeButtonImage = UIImage(named: evenIndexPath ? "likeButtonOn" : "likeButtonOff")
+        let likeButtonImage = UIImage(named: evenIndexPath ? "LikeHeartActive" : "LikeHeartDisabled")
 
         guard let likeButtonImage else { return }
 
