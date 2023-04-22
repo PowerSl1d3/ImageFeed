@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 
 final class WebViewController: UIViewController {
-    let UnsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
+    private let UnsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
 
     weak var delegate: WebViewControllerDelegate?
 

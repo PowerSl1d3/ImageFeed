@@ -75,14 +75,14 @@ extension ImagesListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
 
-        configCell(for: imageListCell, indexPath: indexPath)
+        configure(cell: imageListCell, for: indexPath)
 
         return imageListCell
     }
 }
 
 private extension ImagesListViewController {
-    func configCell(for cell: ImageListCell, indexPath: IndexPath) {
+    func configure(cell: ImageListCell, for indexPath: IndexPath) {
         let image = UIImage(named: photosName[indexPath.row])
         guard let image else { return }
 

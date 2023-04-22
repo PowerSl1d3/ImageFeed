@@ -8,7 +8,7 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
-    let avatarImageView: UIImageView = {
+    private let avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "AnonymAvatar"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
@@ -16,7 +16,7 @@ final class ProfileViewController: UIViewController {
         return imageView
     }()
 
-    let exitButton: UIButton = {
+    private let exitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .ypRed
@@ -26,7 +26,7 @@ final class ProfileViewController: UIViewController {
         return button
     }()
 
-    let profileTitleLabel: UILabel = {
+    private let profileTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "YSDisplay-Bold", size: 23)
@@ -36,7 +36,7 @@ final class ProfileViewController: UIViewController {
         return label
     }()
 
-    let profileSubtitleLabel: UILabel = {
+    private let profileSubtitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "YSDisplay-Medium", size: 13)
@@ -46,7 +46,7 @@ final class ProfileViewController: UIViewController {
         return label
     }()
 
-    let profileDescriptionLabel: UILabel = {
+    private let profileDescriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "YSDisplay-Medium", size: 13)
