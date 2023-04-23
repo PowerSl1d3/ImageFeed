@@ -22,7 +22,7 @@ extension URLRequest {
     static func makeHTTPRequest(
         path: String,
         httpMethod: String,
-        baseURL: URL = UnsplashAPIGlobalConstants.defaultBaseURL
+        baseURL: URL = UnsplashAPIGlobalConstants.defaultBaseAPIURL
     ) throws -> URLRequest {
         guard let url = URL(string: path, relativeTo: baseURL) else {
             throw(URLRequestError.requestCreateError)
@@ -35,10 +35,6 @@ extension URLRequest {
 }
 
 func authTokenRequest(code: String) throws -> URLRequest {
-    guard let url = URL(string: "https://unsplash.com") else {
-        throw(URLRequestError.requestCreateError)
-    }
-
     let queryParams = [
         UnsplashAPIGlobalConstants.QueryKeys.clientId: UnsplashAPIGlobalConstants.QueryValues.accessKey,
         UnsplashAPIGlobalConstants.QueryKeys.cleintSecret: UnsplashAPIGlobalConstants.QueryValues.secretKey,
@@ -50,7 +46,7 @@ func authTokenRequest(code: String) throws -> URLRequest {
     return try URLRequest.makeHTTPRequest(
         path: addQueryParams(queryParams, toRelativePath: "/oauth/token"),
         httpMethod: HTTPMethods.POST,
-        baseURL: url
+        baseURL: UnsplashAPIGlobalConstants.defaultBaseURL
     )
 }
 

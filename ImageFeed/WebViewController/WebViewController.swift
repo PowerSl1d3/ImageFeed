@@ -9,8 +9,6 @@ import UIKit
 import WebKit
 
 final class WebViewController: UIViewController {
-    private let UnsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
-
     weak var delegate: WebViewControllerDelegate?
 
     @IBOutlet private weak var webView: WKWebView!
@@ -21,7 +19,11 @@ final class WebViewController: UIViewController {
 
         webView.navigationDelegate = self
 
-        var urlComponents = URLComponents(string: UnsplashAuthorizeURLString)
+        var urlComponents = URLComponents(
+            url: UnsplashAPIGlobalConstants.unsplashAuthorizeURL,
+            resolvingAgainstBaseURL: true
+        )
+        
         urlComponents?.queryItems = [
             URLQueryItem(
                 name: UnsplashAPIGlobalConstants.QueryKeys.clientId,
