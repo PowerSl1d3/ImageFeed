@@ -10,6 +10,9 @@ import Foundation
 final class OAuth2Service {
     private let urlSession = URLSession.shared
 
+    private var task: URLSessionTask?
+    private var lastCode: String?
+
     private (set) var authToken: String? {
         get {
             return OAuth2TokenStorage().token
@@ -19,10 +22,17 @@ final class OAuth2Service {
         }
     }
 
-    func fetchAuthToken(
+    func fetchOAuthToken(
         with code: String,
         completion: @escaping (Result<String, Error>) -> Void
     ) {
+        if !Thread.isMainThread {
+            assertionFailure("Code was called from non-main thread")
+        }
+
+        guard lastCode != code else { return }
+        task?.cancel()
+        lastCode = code
         let request: URLRequest
         do {
             request = try authTokenRequest(code: code)
@@ -43,7 +53,13 @@ final class OAuth2Service {
             case .failure(let error):
                 completion(.failure(error))
             }
+
+            self.task = nil
+            if case .failure = result {
+                self.lastCode = nil
+            }
         }
+        self.task = task
         task.resume()
     }
 }
