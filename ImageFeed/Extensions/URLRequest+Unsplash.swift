@@ -50,6 +50,16 @@ func authTokenRequest(code: String) throws -> URLRequest {
     )
 }
 
+func profileRequest(with token: String) throws -> URLRequest {
+    var request = try URLRequest.makeHTTPRequest(
+        path: UnsplashAPIGlobalConstants.profilePath,
+        httpMethod: HTTPMethods.GET
+    )
+    request.setValue("Bearer \(token)", forHTTPHeaderField: UnsplashAPIGlobalConstants.HeaderFields.authorization)
+
+    return request
+}
+
 fileprivate func addQueryParams(_ queryParams: [String: String], toRelativePath path: String) -> String {
     path + "?" + queryParams.map { (key, value) in
         key + "=" + value

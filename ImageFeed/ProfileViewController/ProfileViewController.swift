@@ -52,9 +52,12 @@ final class ProfileViewController: UIViewController {
         label.font = UIFont(name: "YSDisplay-Medium", size: 13)
         label.textColor = .ypWhite
         label.text = "Hello, world!"
+        label.numberOfLines = 0
 
         return label
     }()
+
+    private let profileService = ProfileService.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +69,13 @@ final class ProfileViewController: UIViewController {
         view.addSubview(profileDescriptionLabel)
 
         setupConstraints()
+
+        guard let profile = self.profileService.profile else {
+            assertionFailure("Something went wrong. Profile in ProfileService was nil")
+
+            return
+        }
+        updateProfileDetails(profile: profile)
     }
 }
 
@@ -115,7 +125,17 @@ private extension ProfileViewController {
             profileDescriptionLabel.topAnchor.constraint(
                 equalTo: profileSubtitleLabel.bottomAnchor,
                 constant: 8
+            ),
+            profileDescriptionLabel.trailingAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                constant: -16
             )
         ])
+    }
+
+    func updateProfileDetails(profile: Profile) {
+        profileTitleLabel.text = profile.username
+        profileSubtitleLabel.text = profile.loginName
+        profileDescriptionLabel.text = profile.bio
     }
 }

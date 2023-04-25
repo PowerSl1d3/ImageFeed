@@ -11,6 +11,12 @@ struct UnsplashAPIGlobalConstants {
     static let defaultBaseURL = URL(string: "https://unsplash.com")!
     static let defaultBaseAPIURL = URL(string: "https://api.unsplash.com")!
     static let unsplashAuthorizeURL = URL(string: "/oauth/authorize", relativeTo: defaultBaseURL)!
+    
+    static let profilePath = "/me"
+
+    enum HeaderFields {
+        static let authorization = "Authorization"
+    }
 
     enum QueryKeys {
         static let clientId = "client_id"
