@@ -79,7 +79,8 @@ private extension SplashViewController {
         profileService.fetchProfile(token) { [weak self] result in
             guard let self else { return }
             switch result {
-            case .success:
+            case .success(let profile):
+                ProfileImageService.shared.fetchProfileImage(profile.username) { _ in }
                 UIBlockingProgressHUD.dismiss()
                 self.switchToTabBarController()
             case .failure:

@@ -13,6 +13,7 @@ struct UnsplashAPIGlobalConstants {
     static let unsplashAuthorizeURL = URL(string: "/oauth/authorize", relativeTo: defaultBaseURL)!
     
     static let profilePath = "/me"
+    static let profileImagePath = "/users/"
 
     enum HeaderFields {
         static let authorization = "Authorization"
