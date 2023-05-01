@@ -14,7 +14,7 @@ enum NetworkError: Error {
 }
 
 extension URLSession {
-    func data(
+    func dataTask(
         for request: URLRequest,
         completion: @escaping (Result<Data, Error>) -> Void
     ) -> URLSessionDataTask {
@@ -41,5 +41,22 @@ extension URLSession {
         }
 
         return task
+    }
+}
+
+extension URLSession {
+    func objectTask<ResultObject: Decodable>(
+        for request: URLRequest,
+        completion: @escaping (Result<ResultObject, Error>) -> Void
+    ) -> URLSessionTask {
+        let decoder = JSONDecoder()
+        return dataTask(for: request) { result in
+            let response = result.flatMap { data in
+                Result {
+                    try decoder.decode(ResultObject.self, from: data)
+                }
+            }
+            completion(response)
+        }
     }
 }

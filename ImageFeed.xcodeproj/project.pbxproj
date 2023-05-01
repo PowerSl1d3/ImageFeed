@@ -13,6 +13,8 @@
 		90079AA62998ED7700CF86D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90079AA42998ED7700CF86D2 /* Main.storyboard */; };
 		90079AA82998ED7800CF86D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90079AA72998ED7800CF86D2 /* Assets.xcassets */; };
 		90079AAB2998ED7800CF86D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90079AA92998ED7800CF86D2 /* LaunchScreen.storyboard */; };
+		9012909B2A000D95004B3271 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9012909A2A000D95004B3271 /* AlertPresenter.swift */; };
+		9012909D2A000DB7004B3271 /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9012909C2A000DB7004B3271 /* AlertModel.swift */; };
 		9021207429F7F94B003A9595 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021207329F7F94B003A9595 /* ProfileService.swift */; };
 		9021207629F7F978003A9595 /* ProfileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021207529F7F978003A9595 /* ProfileResult.swift */; };
 		9021207829F7FAC4003A9595 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021207729F7FAC4003A9595 /* Profile.swift */; };
@@ -48,6 +50,8 @@
 		90079AA72998ED7800CF86D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90079AAA2998ED7800CF86D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90079AAC2998ED7800CF86D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9012909A2A000D95004B3271 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
+		9012909C2A000DB7004B3271 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		9021207329F7F94B003A9595 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		9021207529F7F978003A9595 /* ProfileResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResult.swift; sourceTree = "<group>"; };
 		9021207729F7FAC4003A9595 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 				90E06C8A29B89FD400210B35 /* SingleImageViewController */,
 				908841FB29EEC0FC001C4372 /* AuthViewController */,
 				9072227829F3B62C00413039 /* WebViewController */,
+				901290992A000D7C004B3271 /* AlertPresenter */,
 				9072227929F3B64700413039 /* Models */,
 				9082649D29F1862C00701B58 /* Storages */,
 				9082649429F164D900701B58 /* Services */,
@@ -123,6 +128,14 @@
 				90079AAC2998ED7800CF86D2 /* Info.plist */,
 			);
 			path = ImageFeed;
+			sourceTree = "<group>";
+		};
+		901290992A000D7C004B3271 /* AlertPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				9012909A2A000D95004B3271 /* AlertPresenter.swift */,
+			);
+			path = AlertPresenter;
 			sourceTree = "<group>";
 		};
 		9072227729F39EFD00413039 /* SplashViewController */ = {
@@ -145,6 +158,7 @@
 		9072227929F3B64700413039 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9012909C2A000DB7004B3271 /* AlertModel.swift */,
 				9082649229F1636600701B58 /* OAuthTokenResponseBody.swift */,
 				9021207529F7F978003A9595 /* ProfileResult.swift */,
 				9021207729F7FAC4003A9595 /* Profile.swift */,
@@ -359,7 +373,9 @@
 				905C149429FD2A0000920CDF /* ProfileImageService.swift in Sources */,
 				907FB07229F6ADF4000DE78C /* UIBlockingProgressHUD.swift in Sources */,
 				90A9249B29B40B2800893085 /* ImageListCell.swift in Sources */,
+				9012909D2A000DB7004B3271 /* AlertModel.swift in Sources */,
 				90A924AB29B464FC00893085 /* ProfileViewController.swift in Sources */,
+				9012909B2A000D95004B3271 /* AlertPresenter.swift in Sources */,
 				9021207629F7F978003A9595 /* ProfileResult.swift in Sources */,
 				90EA0B9D29D99356000A2BB9 /* UIColor+ImageFeedColors.swift in Sources */,
 				905C149629FD2A1E00920CDF /* UserRusult.swift in Sources */,

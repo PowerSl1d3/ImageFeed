@@ -42,7 +42,7 @@ final class OAuth2Service {
             return
         }
 
-        let task = object(for: request) { [weak self] result in
+        let task = urlSession.objectTask(for: request) { [weak self] (result: Result<OAuthTokenResponseBody, Error>) in
             guard let self else { return }
 
             switch result {
@@ -61,22 +61,5 @@ final class OAuth2Service {
         }
         self.task = task
         task.resume()
-    }
-}
-
-private extension OAuth2Service {
-    func object(
-        for request: URLRequest,
-        completion: @escaping (Result<OAuthTokenResponseBody, Error>) -> Void
-    ) -> URLSessionDataTask {
-        let decoder = JSONDecoder()
-        return urlSession.data(for: request) { result in
-            let response = result.flatMap { data in
-                Result {
-                    try decoder.decode(OAuthTokenResponseBody.self, from: data)
-                }
-            }
-            completion(response)
-        }
     }
 }

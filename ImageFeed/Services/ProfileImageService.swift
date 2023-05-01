@@ -50,7 +50,7 @@ final class ProfileImageService {
             return
         }
 
-        let task = object(for: request) { [weak self] result in
+        let task = urlSession.objectTask(for: request) { [weak self] (result: Result<UserResult, Error>) in
             guard let self else { return }
 
             switch result {
@@ -71,22 +71,5 @@ final class ProfileImageService {
         }
         self.task = task
         task.resume()
-    }
-}
-
-private extension ProfileImageService {
-    func object(
-        for request: URLRequest,
-        completion: @escaping (Result<UserResult, Error>) -> Void
-    ) -> URLSessionDataTask {
-        let decoder = JSONDecoder()
-        return urlSession.data(for: request) { result in
-            let response = result.flatMap { data in
-                Result {
-                    try decoder.decode(UserResult.self, from: data)
-                }
-            }
-            completion(response)
-        }
     }
 }

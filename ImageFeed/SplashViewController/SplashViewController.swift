@@ -14,6 +14,8 @@ final class SplashViewController: UIViewController {
     private let profileService = ProfileService.shared
     private let oauth2TokenStorage = OAuth2TokenStorage()
 
+    private var alertPresenter: AlertPresenterProtocol! = AlertPresenter()
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -56,19 +58,25 @@ extension SplashViewController: AuthViewControllerDelegate {
         UIBlockingProgressHUD.show()
         vc.dismiss(animated: true) { [weak self] in
             guard let self else { return }
-            self.fetchOAuthToken(code)
+            self.fetchOAuthToken(code, authViewController: vc)
         }
     }
 
-    private func fetchOAuthToken(_ code: String) {
-        oauth2Service.fetchOAuthToken(with: code) { [weak self] result in
+    private func fetchOAuthToken(_ code: String, authViewController: UIViewController) {
+        oauth2Service.fetchOAuthToken(with: code) { [weak self, weak authViewController] result in
             guard let self = self else { return }
             switch result {
             case .success(let token):
                 self.fetchProfile(with: token)
             case .failure:
-                // TODO [Sprint 11]
-                break
+                self.oauth2TokenStorage.token = nil
+                UIBlockingProgressHUD.dismiss()
+                let alertModel = AlertModel(
+                    title: "Что-то пошло не так:(",
+                    message: "Не удалось войти в систему",
+                    buttonText: "Ок"
+                )
+                self.alertPresenter.show(alertModel: alertModel, presentingViewController: authViewController)
             }
         }
     }
