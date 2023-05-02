@@ -55,7 +55,7 @@ final class ProfileImageService {
 
             switch result {
             case .success(let userResult):
-                let avatarURL = userResult.profileImage.small
+                let avatarURL = userResult.profileImage.large
                 self.avatarURL = avatarURL
                 completion(.success(avatarURL))
                 NotificationCenter.default.post(

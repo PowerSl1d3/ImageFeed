@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ProfileViewController: UIViewController {
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "AnonymAvatar"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
 
         return imageView
     }()
@@ -71,6 +73,7 @@ final class ProfileViewController: UIViewController {
         view.addSubview(profileDescriptionLabel)
 
         setupConstraints()
+        setupViews()
 
         guard let profile = self.profileService.profile else {
             assertionFailure("Something went wrong. Profile in ProfileService was nil")
@@ -146,6 +149,10 @@ private extension ProfileViewController {
         ])
     }
 
+    func setupViews() {
+        avatarImageView.layer.cornerRadius = 35
+    }
+
     func updateProfileDetails(profile: Profile) {
         profileTitleLabel.text = profile.username
         profileSubtitleLabel.text = profile.loginName
@@ -158,6 +165,9 @@ private extension ProfileViewController {
             return
         }
 
-        // TODO: [sprint 11]
+        avatarImageView.kf.indicatorType = .activity
+        avatarImageView.kf.setImage(
+            with: url
+        )
     }
 }
