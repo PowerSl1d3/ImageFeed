@@ -8,7 +8,12 @@
 import UIKit
 
 final class SplashViewController: UIViewController {
-    private let showAuthenticationScreenSegueIdentifier = "showAuthViewController"
+    private let splashLogo: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "PracticumLogo"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        return imageView
+    }()
 
     private let oauth2Service = OAuth2Service()
     private let profileService = ProfileService.shared
@@ -19,10 +24,14 @@ final class SplashViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        view.addSubview(splashLogo)
+
+        setupViews()
+        setupConstraints()
         if let token = oauth2TokenStorage.token {
             fetchProfile(with: token)
         } else {
-            performSegue(withIdentifier: showAuthenticationScreenSegueIdentifier, sender: nil)
+            performAuthorizationFlow()
         }
     }
 
@@ -37,19 +46,20 @@ final class SplashViewController: UIViewController {
 }
 
 extension SplashViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == showAuthenticationScreenSegueIdentifier {
-            guard let navigationController = segue.destination as? UINavigationController,
-                  let viewController = navigationController.viewControllers.first as? AuthViewController else {
-                assertionFailure("Failed to prepare for \(showAuthenticationScreenSegueIdentifier)")
+    func performAuthorizationFlow() {
+        let authViewController = UIStoryboard(
+            name: "Main",
+            bundle: .main
+        ).instantiateViewController(withIdentifier: "AuthViewController")
 
-                return
-            }
-
-            viewController.delegate = self
-        } else {
-            super.prepare(for: segue, sender: sender)
+        guard let authViewController = authViewController as? AuthViewController else {
+            return
         }
+
+        authViewController.delegate = self
+        authViewController.modalPresentationStyle = .fullScreen
+
+        present(authViewController, animated: false)
     }
 }
 
@@ -83,6 +93,17 @@ extension SplashViewController: AuthViewControllerDelegate {
 }
 
 private extension SplashViewController {
+    func setupViews() {
+        view.backgroundColor = .ypBlack
+    }
+
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            splashLogo.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            splashLogo.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        ])
+    }
+
     func fetchProfile(with token: String) {
         profileService.fetchProfile(token) { [weak self] result in
             guard let self else { return }
