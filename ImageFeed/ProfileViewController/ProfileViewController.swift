@@ -150,6 +150,7 @@ private extension ProfileViewController {
     }
 
     func setupViews() {
+        view.backgroundColor = .ypBlack
         avatarImageView.layer.cornerRadius = 35
     }
 
