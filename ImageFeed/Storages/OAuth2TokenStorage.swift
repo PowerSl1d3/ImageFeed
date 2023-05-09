@@ -20,7 +20,13 @@ final class OAuth2TokenStorage {
             keychain.string(forKey: StorageKeys.token)
         }
         set {
-            keychain.set(newValue ?? "", forKey: StorageKeys.token)
+            guard let newValue else {
+                keychain.removeObject(forKey: StorageKeys.token)
+
+                return
+            }
+
+            keychain.set(newValue, forKey: StorageKeys.token)
         }
     }
 }
