@@ -12,6 +12,7 @@ final class ImagesListViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
 
+    private let imagesListService = ImagesListService()
     private let photosName = { (0..<20).map(String.init) }()
 
     private lazy var dateFormatter: DateFormatter = {
@@ -25,6 +26,7 @@ final class ImagesListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagesListService.fetchPhotosNextPage()
 
         tableView.contentInset = UIEdgeInsets(top: 12, left: .zero, bottom: 12, right: .zero)
     }
@@ -44,12 +46,18 @@ final class ImagesListViewController: UIViewController {
 }
 
 extension ImagesListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         tableView.deselectRow(at: indexPath, animated: false)
         performSegue(withIdentifier: ShowSingleImageSegueIdentifier, sender: indexPath)
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
         guard let image = UIImage(named: photosName[indexPath.row]) else {
             return 0
         }
@@ -61,14 +69,29 @@ extension ImagesListViewController: UITableViewDelegate {
         let cellHeight = image.size.height * scale + imageInsets.top + imageInsets.bottom
         return cellHeight
     }
+
+    func tableView(
+        _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath
+    ) {
+        guard indexPath.row + 1 == imagesListService.photos.count else { return }
+        imagesListService.fetchPhotosNextPage()
+    }
 }
 
 extension ImagesListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         photosName.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ImageListCell.reuseIdentifier, for: indexPath)
 
         guard let imageListCell = cell as? ImageListCell else {
@@ -82,7 +105,10 @@ extension ImagesListViewController: UITableViewDataSource {
 }
 
 private extension ImagesListViewController {
-    func configure(cell: ImageListCell, for indexPath: IndexPath) {
+    func configure(
+        cell: ImageListCell,
+        for indexPath: IndexPath
+    ) {
         let image = UIImage(named: photosName[indexPath.row])
         guard let image else { return }
 
