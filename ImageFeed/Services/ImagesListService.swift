@@ -41,6 +41,7 @@ final class ImagesListService {
             switch result {
             case .success(let photosResult):
                 photos.append(contentsOf: photosResult.map(Photo.init(photoResult:)))
+                lastLoadedPage = (lastLoadedPage ?? 0) + 1
                 NotificationCenter.default.post(name: Self.DidChangeNotification, object: nil)
             case .failure:
                 assertionFailure("Something went wrong. Can't get images from UnsplashAPI")
