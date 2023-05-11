@@ -15,14 +15,15 @@ final class ImagesListService {
 
     private let oauth2TokenStorage = OAuth2TokenStorage()
     private let urlSession = URLSession.shared
-    private var task: URLSessionTask?
+    private var fetchImagesTask: URLSessionTask?
+    private var changeImageLikeTask: URLSessionTask?
 
     func fetchPhotosNextPage() {
         if !Thread.isMainThread {
             assertionFailure("Code was called from non-main thread")
         }
 
-        guard task == nil, let token = oauth2TokenStorage.token else {
+        guard fetchImagesTask == nil, let token = oauth2TokenStorage.token else {
             return
         }
 
@@ -47,9 +48,40 @@ final class ImagesListService {
                 assertionFailure("Something went wrong. Can't get images from UnsplashAPI")
             }
 
-            self.task = nil
+            self.fetchImagesTask = nil
         }
-        self.task = task
+        self.fetchImagesTask = task
         task.resume()
+    }
+
+    func changeLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void, Error>) -> Void) {
+        if !Thread.isMainThread {
+            assertionFailure("Code was called from non-main thread")
+        }
+
+        guard changeImageLikeTask == nil, let token = oauth2TokenStorage.token else { return }
+
+        let request: URLRequest
+        do {
+            request = try imageLikeRequest(with: token, photoId: photoId, isLiked: isLike)
+        } catch {
+            assertionFailure("Something went wrong. Can't create \\photos\\<id>\\like request")
+            return
+        }
+
+        let changeImageLikeTask = urlSession.dataTask(for: request) { [weak self] result in
+            guard let self else { return }
+
+            switch result {
+            case .success:
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+
+            self.changeImageLikeTask = nil
+        }
+        self.changeImageLikeTask = changeImageLikeTask
+        changeImageLikeTask.resume()
     }
 }

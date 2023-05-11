@@ -115,6 +115,39 @@ extension ImagesListViewController: UITableViewDataSource {
     }
 }
 
+extension ImagesListViewController: ImageListCellDelegate {
+    func didTapLikeButton(cell: ImageListCell, cellModel: Photo?) {
+        guard let cellModel,
+              let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
+
+        cell.likeButton.isUserInteractionEnabled = false
+
+        imagesListService.changeLike(
+            photoId: cellModel.id,
+            isLike: !cellModel.isLiked
+        ) { [weak self, weak cell] result in
+            defer { cell?.likeButton.isUserInteractionEnabled = true }
+
+            guard let self, let cell, case .success = result else { return }
+
+            let photo = self.photos[indexPath.row]
+            let newPhoto = Photo(
+                id: photo.id,
+                size: photo.size,
+                createdAt: photo.createdAt,
+                welcomeDescription: photo.welcomeDescription,
+                thumbImageURL: photo.thumbImageURL,
+                largeImageURL: photo.largeImageURL,
+                isLiked: !photo.isLiked
+            )
+            self.photos[indexPath.row] = newPhoto
+            cell.setIsLiked(newPhoto.isLiked)
+        }
+    }
+}
+
 private extension ImagesListViewController {
     func configure(
         cell: ImageListCell,
@@ -128,18 +161,15 @@ private extension ImagesListViewController {
             return
         }
 
-        let evenIndexPath = indexPath.row % 2 == 0
-        let likeButtonImage = UIImage(named: evenIndexPath ? "LikeHeartActive" : "LikeHeartDisabled")
-
-        guard let likeButtonImage else { return }
-
+        cell.cellModel = currentPhoto
+        cell.delegate = self
         cell.photoImage.kf.indicatorType = .activity
         cell.photoImage.kf.setImage(with: imageUrl, placeholder: UIImage(named: "PhotoStub")) { [weak self] _ in
             self?.tableView.reloadRows(at: [indexPath], with: .automatic)
         }
 
         cell.dateLabel.text = dateFormatter.string(from: currentPhoto.createdAt ?? Date())
-        cell.likeButton.setImage(likeButtonImage, for: .normal)
+        cell.setIsLiked(currentPhoto.isLiked)
     }
 
     func updateTableViewAnimated() {

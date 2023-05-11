@@ -33,6 +33,7 @@
 		9082649C29F1861400701B58 /* OAuth2TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082649B29F1861400701B58 /* OAuth2TokenStorage.swift */; };
 		908841FD29EEC118001C4372 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908841FC29EEC118001C4372 /* WebViewController.swift */; };
 		908841FF29EEC1FA001C4372 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908841FE29EEC1FA001C4372 /* AuthViewController.swift */; };
+		90897EFF2A0D261F00B899C3 /* ImageListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90897EFE2A0D261F00B899C3 /* ImageListCellDelegate.swift */; };
 		9093C8022A008FBB00082DC8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9093C8012A008FBB00082DC8 /* Kingfisher */; };
 		9097BC4029B6980A007428F3 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9097BC3F29B6980A007428F3 /* SingleImageViewController.swift */; };
 		90A9249B29B40B2800893085 /* ImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A9249A29B40B2800893085 /* ImageListCell.swift */; };
@@ -75,6 +76,7 @@
 		9082649B29F1861400701B58 /* OAuth2TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2TokenStorage.swift; sourceTree = "<group>"; };
 		908841FC29EEC118001C4372 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		908841FE29EEC1FA001C4372 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		90897EFE2A0D261F00B899C3 /* ImageListCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCellDelegate.swift; sourceTree = "<group>"; };
 		9097BC3F29B6980A007428F3 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		90A9249A29B40B2800893085 /* ImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCell.swift; sourceTree = "<group>"; };
 		90A924AA29B464FC00893085 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				90079AA22998ED7700CF86D2 /* ImagesListViewController.swift */,
+				90897EFE2A0D261F00B899C3 /* ImageListCellDelegate.swift */,
 				90A9249A29B40B2800893085 /* ImageListCell.swift */,
 			);
 			path = ImageListViewController;
@@ -406,6 +409,7 @@
 				9021207429F7F94B003A9595 /* ProfileService.swift in Sources */,
 				905C149429FD2A0000920CDF /* ProfileImageService.swift in Sources */,
 				907FB07229F6ADF4000DE78C /* UIBlockingProgressHUD.swift in Sources */,
+				90897EFF2A0D261F00B899C3 /* ImageListCellDelegate.swift in Sources */,
 				90A9249B29B40B2800893085 /* ImageListCell.swift in Sources */,
 				9012909D2A000DB7004B3271 /* AlertModel.swift in Sources */,
 				90A924AB29B464FC00893085 /* ProfileViewController.swift in Sources */,

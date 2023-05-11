@@ -84,6 +84,16 @@ func imagesListRequest(with token: String, for page: Int) throws -> URLRequest {
     return request
 }
 
+func imageLikeRequest(with token: String, photoId: String, isLiked: Bool) throws -> URLRequest {
+    var request = try URLRequest.makeHTTPRequest(
+        path: String(format: UnsplashAPIGlobalConstants.likePhotoPath, photoId),
+        httpMethod: isLiked ? HTTPMethods.POST : HTTPMethods.DELETE
+    )
+    request.setValue("Bearer \(token)", forHTTPHeaderField: UnsplashAPIGlobalConstants.HeaderFields.authorization)
+
+    return request
+}
+
 fileprivate func addQueryParams(_ queryParams: [String: String], toRelativePath path: String) -> String {
     path + "?" + queryParams.map { (key, value) in
         key + "=" + value

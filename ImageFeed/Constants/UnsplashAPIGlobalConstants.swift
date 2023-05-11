@@ -15,6 +15,7 @@ struct UnsplashAPIGlobalConstants {
     static let profilePath = "/me"
     static let profileImagePath = "/users/"
     static let imagesListPath = "/photos"
+    static let likePhotoPath = "/photos/%@/like"
 
     enum HeaderFields {
         static let authorization = "Authorization"
