@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 
 protocol AlertPresenterProtocol {
-    func show(alertModel: AlertModel, presentingViewController: UIViewController?)
+    var viewController: UIViewController? { get set }
+
+    func show(alertModel: AlertModel)
 }
 
 struct AlertPresenter: AlertPresenterProtocol {
-    weak var delegate: UIViewController?
+    weak var viewController: UIViewController?
 
-    func show(alertModel: AlertModel, presentingViewController: UIViewController?) {
-        let presentingViewController = presentingViewController ?? delegate
-
+    func show(alertModel: AlertModel) {
         let alert = UIAlertController(
             title: alertModel.title,
             message: alertModel.message,
@@ -30,6 +30,6 @@ struct AlertPresenter: AlertPresenterProtocol {
 
         alert.addAction(action)
 
-        presentingViewController?.present(alert, animated: true, completion: nil)
+        viewController?.present(alert, animated: true, completion: nil)
     }
 }

@@ -12,13 +12,14 @@ final class ProfileImageService {
     static let DidChangeNotification = Notification.Name(rawValue: "ProfileImageProviderDidChange")
 
     private let urlSession = URLSession.shared
+    private let oauth2TokenStorage = OAuth2TokenStorage()
 
     private (set) var authToken: String? {
         get {
-            return OAuth2TokenStorage().token
+            oauth2TokenStorage.token
         }
         set {
-            OAuth2TokenStorage().token = newValue
+            oauth2TokenStorage.token = newValue
         }
     }
 

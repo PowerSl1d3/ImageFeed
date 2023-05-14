@@ -19,15 +19,30 @@ final class SplashViewController: UIViewController {
     private let profileService = ProfileService.shared
     private let oauth2TokenStorage = OAuth2TokenStorage()
 
-    private var alertPresenter: AlertPresenterProtocol! = AlertPresenter()
+    private var alertPresenter: AlertPresenterProtocol = AlertPresenter()
+    private var error: Error?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        view.addSubview(splashLogo)
+
+        alertPresenter.viewController = self
+        setupViews()
+        setupConstraints()
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        view.addSubview(splashLogo)
+        // Если не удалось произвести авторизацию, то остаёмся на этом контроллере с алертом и просим попробовать
+        // попробовать авторизоваться ещё раз
+        guard error == nil else {
+            error = nil
 
-        setupViews()
-        setupConstraints()
+            return
+        }
+
         if let token = oauth2TokenStorage.token {
             fetchProfile(with: token)
         } else {
@@ -78,15 +93,23 @@ extension SplashViewController: AuthViewControllerDelegate {
             switch result {
             case .success(let token):
                 self.fetchProfile(with: token)
-            case .failure:
+            case .failure(let error):
+                self.error = error
                 self.oauth2TokenStorage.token = nil
                 UIBlockingProgressHUD.dismiss()
-                let alertModel = AlertModel(
+                authViewController?.dismiss(animated: true)
+
+                var alertModel = AlertModel(
                     title: "Что-то пошло не так:(",
                     message: "Не удалось войти в систему",
                     buttonText: "Ок"
                 )
-                self.alertPresenter.show(alertModel: alertModel, presentingViewController: authViewController)
+
+                alertModel.completion = {
+                    self.performAuthorizationFlow()
+                }
+
+                self.alertPresenter.show(alertModel: alertModel)
             }
         }
     }
