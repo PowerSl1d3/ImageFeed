@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 import Kingfisher
 
 final class ProfileViewController: UIViewController {
@@ -60,6 +61,7 @@ final class ProfileViewController: UIViewController {
     }()
 
     private let profileService = ProfileService.shared
+    private let oauth2TokenStorage = OAuth2TokenStorage()
 
     private var profileImageServiceObserver: NSObjectProtocol?
 
@@ -74,6 +76,8 @@ final class ProfileViewController: UIViewController {
 
         setupConstraints()
         setupViews()
+
+        exitButton.addTarget(self, action: #selector(didTapExitButton), for: .touchUpInside)
 
         guard let profile = self.profileService.profile else {
             assertionFailure("Something went wrong. Profile in ProfileService was nil")
@@ -170,5 +174,28 @@ private extension ProfileViewController {
         avatarImageView.kf.setImage(
             with: url
         )
+    }
+}
+
+// MARK: Actions
+private extension ProfileViewController {
+    @objc func didTapExitButton() {
+        oauth2TokenStorage.token = nil
+        WKWebView.clean()
+        switchToSplashController()
+    }
+}
+
+// MARK: Navigation
+private extension ProfileViewController {
+    func switchToSplashController() {
+        guard let window = UIApplication.shared.windows.first else {
+            assertionFailure("Invalid Configuration")
+
+            return
+        }
+
+        let splashViewController = SplashViewController()
+        window.rootViewController = splashViewController
     }
 }
