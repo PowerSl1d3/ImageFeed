@@ -153,5 +153,12 @@ private extension SplashViewController {
             .instantiateViewController(withIdentifier: "TabBarController")
 
         window.rootViewController = tabBarController
+
+        UIView.transition(
+            with: window,
+            duration: 0.3,
+            options: .transitionCrossDissolve,
+            animations: nil
+        )
     }
 }

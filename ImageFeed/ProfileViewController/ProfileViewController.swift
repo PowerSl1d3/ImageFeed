@@ -197,5 +197,12 @@ private extension ProfileViewController {
 
         let splashViewController = SplashViewController()
         window.rootViewController = splashViewController
+
+        UIView.transition(
+            with: window,
+            duration: 0.3,
+            options: .transitionCrossDissolve,
+            animations: nil
+        )
     }
 }
