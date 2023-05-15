@@ -10,6 +10,9 @@ import Foundation
 final class OAuth2Service {
     private let urlSession = URLSession.shared
 
+    private var task: URLSessionTask?
+    private var lastCode: String?
+
     private (set) var authToken: String? {
         get {
             return OAuth2TokenStorage().token
@@ -19,10 +22,17 @@ final class OAuth2Service {
         }
     }
 
-    func fetchAuthToken(
+    func fetchOAuthToken(
         with code: String,
         completion: @escaping (Result<String, Error>) -> Void
     ) {
+        if !Thread.isMainThread {
+            assertionFailure("Code was called from non-main thread")
+        }
+
+        guard lastCode != code else { return }
+        task?.cancel()
+        lastCode = code
         let request: URLRequest
         do {
             request = try authTokenRequest(code: code)
@@ -32,7 +42,7 @@ final class OAuth2Service {
             return
         }
 
-        let task = object(for: request) { [weak self] result in
+        let task = urlSession.objectTask(for: request) { [weak self] (result: Result<OAuthTokenResponseBody, Error>) in
             guard let self else { return }
 
             switch result {
@@ -41,26 +51,11 @@ final class OAuth2Service {
                 self.authToken = authToken
                 completion(.success(authToken))
             case .failure(let error):
+                self.lastCode = nil
                 completion(.failure(error))
             }
         }
+        self.task = task
         task.resume()
-    }
-}
-
-private extension OAuth2Service {
-    func object(
-        for request: URLRequest,
-        completion: @escaping (Result<OAuthTokenResponseBody, Error>) -> Void
-    ) -> URLSessionDataTask {
-        let decoder = JSONDecoder()
-        return urlSession.data(for: request) { result in
-            let response = result.flatMap { data in
-                Result {
-                    try decoder.decode(OAuthTokenResponseBody.self, from: data)
-                }
-            }
-            completion(response)
-        }
     }
 }

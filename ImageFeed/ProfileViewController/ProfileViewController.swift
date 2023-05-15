@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ProfileViewController: UIViewController {
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "AnonymAvatar"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
 
         return imageView
     }()
@@ -52,9 +54,14 @@ final class ProfileViewController: UIViewController {
         label.font = UIFont(name: "YSDisplay-Medium", size: 13)
         label.textColor = .ypWhite
         label.text = "Hello, world!"
+        label.numberOfLines = 0
 
         return label
     }()
+
+    private let profileService = ProfileService.shared
+
+    private var profileImageServiceObserver: NSObjectProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +73,25 @@ final class ProfileViewController: UIViewController {
         view.addSubview(profileDescriptionLabel)
 
         setupConstraints()
+        setupViews()
+
+        guard let profile = self.profileService.profile else {
+            assertionFailure("Something went wrong. Profile in ProfileService was nil")
+
+            return
+        }
+        updateProfileDetails(profile: profile)
+
+        profileImageServiceObserver = NotificationCenter.default
+            .addObserver(
+                forName: ProfileImageService.DidChangeNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                guard let self else { return }
+                self.updateAvatar()
+            }
+        updateAvatar()
     }
 }
 
@@ -115,7 +141,34 @@ private extension ProfileViewController {
             profileDescriptionLabel.topAnchor.constraint(
                 equalTo: profileSubtitleLabel.bottomAnchor,
                 constant: 8
+            ),
+            profileDescriptionLabel.trailingAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                constant: -16
             )
         ])
+    }
+
+    func setupViews() {
+        view.backgroundColor = .ypBlack
+        avatarImageView.layer.cornerRadius = 35
+    }
+
+    func updateProfileDetails(profile: Profile) {
+        profileTitleLabel.text = profile.username
+        profileSubtitleLabel.text = profile.loginName
+        profileDescriptionLabel.text = profile.bio
+    }
+
+    func updateAvatar() {
+        guard let profileImageURL = ProfileImageService.shared.avatarURL,
+              let url = URL(string: profileImageURL) else {
+            return
+        }
+
+        avatarImageView.kf.indicatorType = .activity
+        avatarImageView.kf.setImage(
+            with: url
+        )
     }
 }
