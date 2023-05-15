@@ -20,7 +20,7 @@ final class ImagesListViewController: UIViewController {
 
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .long
+        formatter.dateStyle = .medium
         formatter.timeStyle = .none
         return formatter
     }()
@@ -168,7 +168,12 @@ private extension ImagesListViewController {
             self?.tableView.reloadRows(at: [indexPath], with: .automatic)
         }
 
-        cell.dateLabel.text = dateFormatter.string(from: currentPhoto.createdAt ?? Date())
+        if let createdAt = currentPhoto.createdAt {
+            cell.dateLabel.text = dateFormatter.string(from: createdAt)
+        } else {
+            cell.dateLabel.text = nil
+        }
+
         cell.setIsLiked(currentPhoto.isLiked)
     }
 
