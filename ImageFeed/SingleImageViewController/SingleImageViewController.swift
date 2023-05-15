@@ -17,11 +17,12 @@ final class SingleImageViewController: UIViewController {
 
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var scrollView: UIScrollView!
-    private let alertPresenter: AlertPresenterProtocol! = AlertPresenter()
+    private var alertPresenter: AlertPresenterProtocol = AlertPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        alertPresenter.viewController = self
         view.backgroundColor = UIColor(named: "YP Black")
         scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 1.25
@@ -94,6 +95,6 @@ private extension SingleImageViewController {
             self.updateImageView()
         }
 
-        self.alertPresenter.show(alertModel: alertModel, presentingViewController: self)
+        alertPresenter.show(alertModel: alertModel)
     }
 }
