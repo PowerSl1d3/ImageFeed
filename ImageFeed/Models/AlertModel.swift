@@ -10,6 +10,8 @@ import Foundation
 struct AlertModel {
     let title: String
     let message: String
-    let buttonText: String
-    var completion: (() -> Void)? = nil
+    var successfulButtonText: String? = nil
+    var cancelButtonText: String? = nil
+    var successfulCompletion: (() -> Void)? = nil
+    var cancelCompletion: (() -> Void)? = nil
 }

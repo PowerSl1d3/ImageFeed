@@ -62,6 +62,7 @@ final class ProfileViewController: UIViewController {
 
     private let profileService = ProfileService.shared
     private let oauth2TokenStorage = OAuth2TokenStorage()
+    private var alertPresenter = AlertPresenter()
 
     private var profileImageServiceObserver: NSObjectProtocol?
 
@@ -77,6 +78,7 @@ final class ProfileViewController: UIViewController {
         setupConstraints()
         setupViews()
 
+        alertPresenter.viewController = self
         exitButton.addTarget(self, action: #selector(didTapExitButton), for: .touchUpInside)
 
         guard let profile = self.profileService.profile else {
@@ -180,9 +182,24 @@ private extension ProfileViewController {
 // MARK: Actions
 private extension ProfileViewController {
     @objc func didTapExitButton() {
-        oauth2TokenStorage.token = nil
-        WKWebView.clean()
-        switchToSplashController()
+        var alertModel = AlertModel(
+            title: "Пока, пока!",
+            message: "Уверены, что хотите выйти?",
+            successfulButtonText: "Да",
+            cancelButtonText: "Нет"
+        )
+
+        alertModel.successfulCompletion = { [weak self] in
+            guard let self else { return }
+
+            oauth2TokenStorage.token = nil
+            WKWebView.clean()
+            switchToSplashController()
+        }
+
+        alertModel.cancelCompletion = {}
+
+        alertPresenter.show(alertModel: alertModel)
     }
 }
 

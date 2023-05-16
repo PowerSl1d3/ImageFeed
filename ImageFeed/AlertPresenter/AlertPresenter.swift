@@ -24,11 +24,19 @@ struct AlertPresenter: AlertPresenterProtocol {
             preferredStyle: .alert
         )
 
-        let action = UIAlertAction(title: alertModel.buttonText, style: .default) { _ in
-            alertModel.completion?()
+        if alertModel.successfulCompletion != nil {
+            let action = UIAlertAction(title: alertModel.successfulButtonText, style: .default) { _ in
+                alertModel.successfulCompletion?()
+            }
+            alert.addAction(action)
         }
 
-        alert.addAction(action)
+        if alertModel.cancelCompletion != nil {
+            let action = UIAlertAction(title: alertModel.cancelButtonText, style: .default) { _ in
+                alertModel.cancelCompletion?()
+            }
+            alert.addAction(action)
+        }
 
         viewController?.present(alert, animated: true, completion: nil)
     }

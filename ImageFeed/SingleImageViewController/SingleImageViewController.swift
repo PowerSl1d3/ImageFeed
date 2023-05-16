@@ -88,10 +88,10 @@ private extension SingleImageViewController {
         var alertModel = AlertModel(
             title: "Что-то пошло не так:(",
             message: "Не удалось загрузить изображение",
-            buttonText: "Попробовать ещё раз"
+            successfulButtonText: "Попробовать ещё раз"
         )
 
-        alertModel.completion = {
+        alertModel.successfulCompletion = {
             self.updateImageView()
         }
 
