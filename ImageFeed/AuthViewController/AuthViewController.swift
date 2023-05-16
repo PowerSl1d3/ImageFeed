@@ -15,14 +15,17 @@ final class AuthViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showWebViewSegueIdentifier,
            let webViewController = segue.destination as? WebViewController {
-            webViewController.delegate = self
+            let presenter = WebViewPresenter()
+            webViewController.viewOutput = presenter
+            presenter.view = webViewController
+            presenter.moduleOutput = self
         } else {
             super.prepare(for: segue, sender: sender)
         }
     }
 }
 
-extension AuthViewController: WebViewControllerDelegate {
+extension AuthViewController: WebViewModuleOutput {
     func webViewViewController(_ vc: WebViewController, didAuthenticateWithCode code: String) {
         delegate?.authViewController(self, didAuthenticateWithCode: code)
     }
