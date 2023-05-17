@@ -10,7 +10,7 @@ import Foundation
 final class AuthHelper {
     let configuration: AuthConfiguration
 
-    init(configuration: AuthConfiguration = .standart) {
+    init(configuration: AuthConfiguration = .standard) {
         self.configuration = configuration
     }
 }
@@ -40,7 +40,7 @@ extension AuthHelper: AuthHelperProtocol {
     }
 }
 
-private extension AuthHelper {
+extension AuthHelper {
     func authURL() throws -> URL {
         var urlComponents = URLComponents(
             url: configuration.authURL,

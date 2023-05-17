@@ -66,7 +66,7 @@ struct AuthConfiguration {
         self.authURL = authURL
     }
 
-    static var standart: AuthConfiguration {
+    static var standard: AuthConfiguration {
         AuthConfiguration(
             accessKey: UnsplashAPIGlobalConstants.QueryValues.accessKey,
             secretKey: UnsplashAPIGlobalConstants.QueryValues.secretKey,

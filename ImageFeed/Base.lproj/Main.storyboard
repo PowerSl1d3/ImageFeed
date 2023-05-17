@@ -251,7 +251,7 @@
         <!--Web View Controller-->
         <scene sceneID="d2q-TQ-ItM">
             <objects>
-                <viewController modalPresentationStyle="overFullScreen" id="2eX-fM-CyL" customClass="WebViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewController" modalPresentationStyle="overFullScreen" id="2eX-fM-CyL" customClass="WebViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9SE-Vf-1CL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
