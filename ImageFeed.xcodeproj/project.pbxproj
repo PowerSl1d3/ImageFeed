@@ -19,6 +19,8 @@
 		9021207429F7F94B003A9595 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021207329F7F94B003A9595 /* ProfileService.swift */; };
 		9021207629F7F978003A9595 /* ProfileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021207529F7F978003A9595 /* ProfileResult.swift */; };
 		9021207829F7FAC4003A9595 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021207729F7FAC4003A9595 /* Profile.swift */; };
+		903DBDBF2A1514D600FD73F1 /* AuthHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBDBE2A1514D600FD73F1 /* AuthHelperProtocol.swift */; };
+		903DBDC12A15163300FD73F1 /* AuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBDC02A15163300FD73F1 /* AuthHelper.swift */; };
 		905C149429FD2A0000920CDF /* ProfileImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905C149329FD2A0000920CDF /* ProfileImageService.swift */; };
 		905C149629FD2A1E00920CDF /* UserRusult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905C149529FD2A1E00920CDF /* UserRusult.swift */; };
 		9068A2AF29EED9E7006E19F8 /* WebViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9068A2AE29EED9E7006E19F8 /* WebViewOutput.swift */; };
@@ -67,6 +69,8 @@
 		9021207329F7F94B003A9595 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		9021207529F7F978003A9595 /* ProfileResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResult.swift; sourceTree = "<group>"; };
 		9021207729F7FAC4003A9595 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		903DBDBE2A1514D600FD73F1 /* AuthHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHelperProtocol.swift; sourceTree = "<group>"; };
+		903DBDC02A15163300FD73F1 /* AuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHelper.swift; sourceTree = "<group>"; };
 		905C149329FD2A0000920CDF /* ProfileImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageService.swift; sourceTree = "<group>"; };
 		905C149529FD2A1E00920CDF /* UserRusult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRusult.swift; sourceTree = "<group>"; };
 		9068A2AE29EED9E7006E19F8 /* WebViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewOutput.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 				9072227929F3B64700413039 /* Models */,
 				9082649D29F1862C00701B58 /* Storages */,
 				9082649429F164D900701B58 /* Services */,
+				903DBDBD2A1514BB00FD73F1 /* Helpers */,
 				90EA0B9B29D9933F000A2BB9 /* Colors */,
 				90CFC93529EAD8AE004260A4 /* Constants */,
 				90F5E4C229EAA56000F288D6 /* Resources */,
@@ -161,6 +166,15 @@
 				9012909A2A000D95004B3271 /* AlertPresenter.swift */,
 			);
 			path = AlertPresenter;
+			sourceTree = "<group>";
+		};
+		903DBDBD2A1514BB00FD73F1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				903DBDBE2A1514D600FD73F1 /* AuthHelperProtocol.swift */,
+				903DBDC02A15163300FD73F1 /* AuthHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		9072227729F39EFD00413039 /* SplashViewController */ = {
@@ -438,6 +452,7 @@
 				9072227429F394C500413039 /* SplashViewController.swift in Sources */,
 				9082649329F1636600701B58 /* OAuthTokenResponseBody.swift in Sources */,
 				90F165272A10605C00E619AD /* WebView+Unsplash.swift in Sources */,
+				903DBDC12A15163300FD73F1 /* AuthHelper.swift in Sources */,
 				908841FF29EEC1FA001C4372 /* AuthViewController.swift in Sources */,
 				9072227629F396CB00413039 /* AuthViewControllerDelegate.swift in Sources */,
 				9068A2AF29EED9E7006E19F8 /* WebViewOutput.swift in Sources */,
@@ -460,6 +475,7 @@
 				90079A9F2998ED7700CF86D2 /* AppDelegate.swift in Sources */,
 				9097BC4029B6980A007428F3 /* SingleImageViewController.swift in Sources */,
 				9082649829F16A5200701B58 /* URLRequest+Unsplash.swift in Sources */,
+				903DBDBF2A1514D600FD73F1 /* AuthHelperProtocol.swift in Sources */,
 				90E4F8502A13EDB2008ADA7A /* WebViewPresenter.swift in Sources */,
 				9082649A29F16BBE00701B58 /* URLSession+Unsplash.swift in Sources */,
 				90079AA12998ED7700CF86D2 /* SceneDelegate.swift in Sources */,

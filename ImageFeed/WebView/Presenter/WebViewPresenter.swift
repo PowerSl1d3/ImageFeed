@@ -10,39 +10,17 @@ import Foundation
 final class WebViewPresenter: WebViewModule {
     weak var view: WebViewInput?
     weak var moduleOutput: WebViewModuleOutput?
+    var authHelper: AuthHelperProtocol
+
+    init(authHelper: AuthHelperProtocol) {
+        self.authHelper = authHelper
+    }
 }
 
 extension WebViewPresenter: WebViewOutput {
     func viewDidLoad() {
-        var urlComponents = URLComponents(
-            url: UnsplashAPIGlobalConstants.unsplashAuthorizeURL,
-            resolvingAgainstBaseURL: true
-        )
-
-        urlComponents?.queryItems = [
-            URLQueryItem(
-                name: UnsplashAPIGlobalConstants.QueryKeys.clientId,
-                value: UnsplashAPIGlobalConstants.QueryValues.accessKey
-            ),
-            URLQueryItem(
-                name: UnsplashAPIGlobalConstants.QueryKeys.redirectURI,
-                value: UnsplashAPIGlobalConstants.QueryValues.redirectURI
-            ),
-            URLQueryItem(
-                name: UnsplashAPIGlobalConstants.QueryKeys.responseType,
-                value: UnsplashAPIGlobalConstants.QueryValues.responseType
-            ),
-            URLQueryItem(
-                name: UnsplashAPIGlobalConstants.QueryKeys.scope,
-                value: UnsplashAPIGlobalConstants.QueryValues.accessScope
-            )
-        ]
-
-        guard let url = urlComponents?.url else { return }
-        let request = URLRequest(url: url)
-
+        let request = authHelper.authRequest()
         didUpdateProgressValue(0.0)
-
         view?.load(request: request)
     }
 
@@ -55,14 +33,7 @@ extension WebViewPresenter: WebViewOutput {
     }
 
     func code(from url: URL) -> String? {
-        if let urlComponents = URLComponents(string: url.absoluteString),
-           urlComponents.path == "/oauth/authorize/native",
-           let items = urlComponents.queryItems,
-           let codeItem = items.first(where: { $0.name == "code" }) {
-            return codeItem.value
-        }
-
-        return nil
+        authHelper.code(from: url)
     }
 
     func webViewViewController(_ vc: WebViewController, didAuthenticateWithCode code: String) {
