@@ -8,25 +8,25 @@
 import UIKit
 
 final class SingleImageViewController: UIViewController {
-    var image: UIImage! {
+    var imageUrl: String! {
         didSet {
             guard isViewLoaded else { return }
-            imageView.image = image
-            rescaleAndCenterImageInScrollView(image: image)
+            updateImageView()
         }
     }
 
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var scrollView: UIScrollView!
+    private var alertPresenter: AlertPresenterProtocol = AlertPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        alertPresenter.viewController = self
         view.backgroundColor = UIColor(named: "YP Black")
         scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 1.25
-        imageView.image = image
-        rescaleAndCenterImageInScrollView(image: image)
+        updateImageView()
     }
     
     @IBAction func didTapBackButton() {
@@ -34,7 +34,7 @@ final class SingleImageViewController: UIViewController {
     }
 
     @IBAction func didTapShareButton() {
-        guard let image else { return }
+        guard let image = imageView.image else { return }
         let activityController = UIActivityViewController(
             activityItems: [image],
             applicationActivities: nil
@@ -65,5 +65,36 @@ private extension SingleImageViewController {
         let x = (newContentSize.width - visibleRectSize.width) / 2
         let y = (newContentSize.height - visibleRectSize.height) / 2
         scrollView.setContentOffset(CGPoint(x: x, y: y), animated: false)
+    }
+
+    func updateImageView() {
+        guard let imageUrl = URL(string: imageUrl) else { return }
+
+        UIBlockingProgressHUD.show()
+        imageView.kf.setImage(with: imageUrl) { [weak self] result in
+            UIBlockingProgressHUD.dismiss()
+            guard let self else { return }
+
+            switch result {
+            case .success(let imageResult):
+                self.rescaleAndCenterImageInScrollView(image: imageResult.image)
+            case .failure:
+                self.showError()
+            }
+        }
+    }
+
+    func showError() {
+        var alertModel = AlertModel(
+            title: "Что-то пошло не так:(",
+            message: "Не удалось загрузить изображение",
+            successfulButtonText: "Попробовать ещё раз"
+        )
+
+        alertModel.successfulCompletion = {
+            self.updateImageView()
+        }
+
+        alertPresenter.show(alertModel: alertModel)
     }
 }

@@ -50,6 +50,7 @@ extension URLSession {
         completion: @escaping (Result<ResultObject, Error>) -> Void
     ) -> URLSessionTask {
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         return dataTask(for: request) { result in
             let response = result.flatMap { data in
                 Result {

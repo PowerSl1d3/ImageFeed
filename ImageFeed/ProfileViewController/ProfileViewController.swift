@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 import Kingfisher
 
 final class ProfileViewController: UIViewController {
@@ -60,6 +61,8 @@ final class ProfileViewController: UIViewController {
     }()
 
     private let profileService = ProfileService.shared
+    private let oauth2TokenStorage = OAuth2TokenStorage()
+    private var alertPresenter = AlertPresenter()
 
     private var profileImageServiceObserver: NSObjectProtocol?
 
@@ -74,6 +77,9 @@ final class ProfileViewController: UIViewController {
 
         setupConstraints()
         setupViews()
+
+        alertPresenter.viewController = self
+        exitButton.addTarget(self, action: #selector(didTapExitButton), for: .touchUpInside)
 
         guard let profile = self.profileService.profile else {
             assertionFailure("Something went wrong. Profile in ProfileService was nil")
@@ -169,6 +175,51 @@ private extension ProfileViewController {
         avatarImageView.kf.indicatorType = .activity
         avatarImageView.kf.setImage(
             with: url
+        )
+    }
+}
+
+// MARK: Actions
+private extension ProfileViewController {
+    @objc func didTapExitButton() {
+        var alertModel = AlertModel(
+            title: "Пока, пока!",
+            message: "Уверены, что хотите выйти?",
+            successfulButtonText: "Да",
+            cancelButtonText: "Нет"
+        )
+
+        alertModel.successfulCompletion = { [weak self] in
+            guard let self else { return }
+
+            oauth2TokenStorage.token = nil
+            WKWebView.clean()
+            switchToSplashController()
+        }
+
+        alertModel.cancelCompletion = {}
+
+        alertPresenter.show(alertModel: alertModel)
+    }
+}
+
+// MARK: Navigation
+private extension ProfileViewController {
+    func switchToSplashController() {
+        guard let window = UIApplication.shared.windows.first else {
+            assertionFailure("Invalid Configuration")
+
+            return
+        }
+
+        let splashViewController = SplashViewController()
+        window.rootViewController = splashViewController
+
+        UIView.transition(
+            with: window,
+            duration: 0.3,
+            options: .transitionCrossDissolve,
+            animations: nil
         )
     }
 }

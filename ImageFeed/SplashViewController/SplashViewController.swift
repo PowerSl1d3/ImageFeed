@@ -102,10 +102,10 @@ extension SplashViewController: AuthViewControllerDelegate {
                 var alertModel = AlertModel(
                     title: "Что-то пошло не так:(",
                     message: "Не удалось войти в систему",
-                    buttonText: "Ок"
+                    successfulButtonText: "Ок"
                 )
 
-                alertModel.completion = {
+                alertModel.successfulCompletion = {
                     self.performAuthorizationFlow()
                 }
 
@@ -153,5 +153,12 @@ private extension SplashViewController {
             .instantiateViewController(withIdentifier: "TabBarController")
 
         window.rootViewController = tabBarController
+
+        UIView.transition(
+            with: window,
+            duration: 0.3,
+            options: .transitionCrossDissolve,
+            animations: nil
+        )
     }
 }
