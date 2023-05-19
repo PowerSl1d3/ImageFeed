@@ -17,6 +17,12 @@ final class WebViewPresenter: WebViewModule {
     }
 }
 
+extension WebViewPresenter {
+    func shouldHideProgress(for value: Float) -> Bool {
+        abs(value - 1.0) <= 0.0001
+    }
+}
+
 extension WebViewPresenter: WebViewOutput {
     func viewDidLoad() {
         let request = authHelper.authRequest()
@@ -42,11 +48,5 @@ extension WebViewPresenter: WebViewOutput {
 
     func webViewControllerDidCancel(_ vc: WebViewController) {
         moduleOutput?.webViewControllerDidCancel(vc)
-    }
-}
-
-extension WebViewPresenter {
-    func shouldHideProgress(for value: Float) -> Bool {
-        abs(value - 1.0) <= 0.0001
     }
 }

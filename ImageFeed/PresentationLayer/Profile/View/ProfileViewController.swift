@@ -6,10 +6,11 @@
 //
 
 import UIKit
-import WebKit
 import Kingfisher
 
 final class ProfileViewController: UIViewController {
+    var viewOutput: ProfileViewOutput?
+
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "AnonymAvatar"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -60,14 +61,10 @@ final class ProfileViewController: UIViewController {
         return label
     }()
 
-    private let profileService = ProfileService.shared
-    private let oauth2TokenStorage = OAuth2TokenStorage()
-    private var alertPresenter = AlertPresenter()
-
-    private var profileImageServiceObserver: NSObjectProtocol?
-
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        exitButton.addTarget(self, action: #selector(didTapExitButton), for: .touchUpInside)
 
         view.addSubview(avatarImageView)
         view.addSubview(exitButton)
@@ -78,26 +75,20 @@ final class ProfileViewController: UIViewController {
         setupConstraints()
         setupViews()
 
-        alertPresenter.viewController = self
-        exitButton.addTarget(self, action: #selector(didTapExitButton), for: .touchUpInside)
+        viewOutput?.viewDidLoad()
+    }
+}
 
-        guard let profile = self.profileService.profile else {
-            assertionFailure("Something went wrong. Profile in ProfileService was nil")
+extension ProfileViewController: ProfileViewInput {
+    func updateProfileDetails(profile: Profile) {
+        profileTitleLabel.text = profile.username
+        profileSubtitleLabel.text = profile.loginName
+        profileDescriptionLabel.text = profile.bio
+    }
 
-            return
-        }
-        updateProfileDetails(profile: profile)
-
-        profileImageServiceObserver = NotificationCenter.default
-            .addObserver(
-                forName: ProfileImageService.DidChangeNotification,
-                object: nil,
-                queue: .main
-            ) { [weak self] _ in
-                guard let self else { return }
-                self.updateAvatar()
-            }
-        updateAvatar()
+    func updateAvatar(with url: URL) {
+        avatarImageView.kf.indicatorType = .activity
+        avatarImageView.kf.setImage(with: url)
     }
 }
 
@@ -159,67 +150,11 @@ private extension ProfileViewController {
         view.backgroundColor = .ypBlack
         avatarImageView.layer.cornerRadius = 35
     }
-
-    func updateProfileDetails(profile: Profile) {
-        profileTitleLabel.text = profile.username
-        profileSubtitleLabel.text = profile.loginName
-        profileDescriptionLabel.text = profile.bio
-    }
-
-    func updateAvatar() {
-        guard let profileImageURL = ProfileImageService.shared.avatarURL,
-              let url = URL(string: profileImageURL) else {
-            return
-        }
-
-        avatarImageView.kf.indicatorType = .activity
-        avatarImageView.kf.setImage(
-            with: url
-        )
-    }
 }
 
 // MARK: Actions
 private extension ProfileViewController {
     @objc func didTapExitButton() {
-        var alertModel = AlertModel(
-            title: "Пока, пока!",
-            message: "Уверены, что хотите выйти?",
-            successfulButtonText: "Да",
-            cancelButtonText: "Нет"
-        )
-
-        alertModel.successfulCompletion = { [weak self] in
-            guard let self else { return }
-
-            oauth2TokenStorage.token = nil
-            WKWebView.clean()
-            switchToSplashController()
-        }
-
-        alertModel.cancelCompletion = {}
-
-        alertPresenter.show(alertModel: alertModel)
-    }
-}
-
-// MARK: Navigation
-private extension ProfileViewController {
-    func switchToSplashController() {
-        guard let window = UIApplication.shared.windows.first else {
-            assertionFailure("Invalid Configuration")
-
-            return
-        }
-
-        let splashViewController = SplashViewController()
-        window.rootViewController = splashViewController
-
-        UIView.transition(
-            with: window,
-            duration: 0.3,
-            options: .transitionCrossDissolve,
-            animations: nil
-        )
+        viewOutput?.didTapExitButton()
     }
 }
