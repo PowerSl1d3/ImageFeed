@@ -7,6 +7,6 @@
 
 protocol ProfileViewOutput {
     func viewDidLoad()
-    
-    func didTapExitButton()
+
+    func didTapProfileExitButton()
 }

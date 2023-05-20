@@ -64,7 +64,7 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        exitButton.addTarget(self, action: #selector(didTapExitButton), for: .touchUpInside)
+        exitButton.addTarget(self, action: #selector(didTapProfileExitButton), for: .touchUpInside)
 
         view.addSubview(avatarImageView)
         view.addSubview(exitButton)
@@ -154,7 +154,7 @@ private extension ProfileViewController {
 
 // MARK: Actions
 private extension ProfileViewController {
-    @objc func didTapExitButton() {
-        viewOutput?.didTapExitButton()
+    @objc func didTapProfileExitButton() {
+        viewOutput?.didTapProfileExitButton()
     }
 }
