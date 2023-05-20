@@ -1,6 +1,6 @@
 //
-//  ImageFeedTests.swift
-//  ImageFeedTests
+//  WebViewTests.swift
+//  WebViewTests
 //
 //  Created by Олег Аксененко on 18.05.2023.
 //

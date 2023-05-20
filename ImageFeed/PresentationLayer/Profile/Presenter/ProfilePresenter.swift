@@ -13,9 +13,11 @@ final class ProfilePresenter {
     weak var view: ProfileViewInput?
     var router: ProfileRouterInput?
 
+    // MARK: Services
+    var profileService: ProfileServiceProtocol = ProfileService.shared
+    var profileImageService: ProfileImageServiceProtocol = ProfileImageService.shared
+
     // MARK: - Private
-    private let profileService = ProfileService.shared
-    private let profileImageService = ProfileImageService.shared
     private let oauth2TokenStorage = OAuth2TokenStorage()
     private var profileImageServiceObserver: NSObjectProtocol?
 }
