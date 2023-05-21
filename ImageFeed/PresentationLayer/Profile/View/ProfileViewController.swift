@@ -26,6 +26,7 @@ final class ProfileViewController: UIViewController {
         button.tintColor = .ypRed
         button.setImage(UIImage(systemName: "ipad.and.arrow.forward"), for: .normal)
         button.contentMode = .scaleAspectFit
+        button.accessibilityIdentifier = "ProfileExitButton"
 
         return button
     }()

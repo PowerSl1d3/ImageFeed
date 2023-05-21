@@ -18,6 +18,8 @@ final class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        webView.accessibilityIdentifier = "UnsplashWebView"
+
         webView.navigationDelegate = self
         setupObservers()
         viewOutput?.viewDidLoad()
