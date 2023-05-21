@@ -32,6 +32,32 @@ final class ImageListCell: UITableViewCell {
         }
         likeButton.setImage(likeButtonImage, for: .normal)
     }
+
+    func configure(
+        for cellModel: Photo,
+        dateFormatter: DateFormatter,
+        setImageCompletion: (() -> Void)? = nil
+    ) {
+        guard let imageUrl = URL(
+            string: cellModel.thumbImageURL
+        ) else {
+            return
+        }
+
+        self.cellModel = cellModel
+        photoImage.kf.indicatorType = .activity
+        photoImage.kf.setImage(with: imageUrl, placeholder: UIImage(named: "PhotoStub")) { _ in
+            setImageCompletion?()
+        }
+
+        if let createdAt = cellModel.createdAt {
+            dateLabel.text = dateFormatter.string(from: createdAt)
+        } else {
+            dateLabel.text = nil
+        }
+
+        setIsLiked(cellModel.isLiked)
+    }
 }
 
 private extension ImageListCell {

@@ -7,10 +7,10 @@
 
 import Foundation
 
-final class ImagesListService {
+final class ImagesListService: ImagesListServiceProtocol {
     static let DidChangeNotification = Notification.Name(rawValue: "ImagesListServiceDidChange")
 
-    private (set) var photos: [Photo] = []
+    private(set) var photos = Photos()
     private var lastLoadedPage: Int?
     private var lastPageLoaded: Bool = false
 
@@ -61,7 +61,11 @@ final class ImagesListService {
         task.resume()
     }
 
-    func changeLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void, Error>) -> Void) {
+    func changeLike(
+        photoId: String,
+        isLike: Bool,
+        _ completion: @escaping (Result<Void, Error>) -> Void
+    ) {
         if !Thread.isMainThread {
             assertionFailure("Code was called from non-main thread")
         }
