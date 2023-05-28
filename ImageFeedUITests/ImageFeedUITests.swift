@@ -31,21 +31,21 @@ final class ImageFeedUITests: XCTestCase {
         XCTAssertTrue(webView.waitForExistence(timeout: 5))
 
         let loginTextField = webView.descendants(matching: .textField).element
-        XCTAssertTrue(loginTextField.waitForExistence(timeout: 5))
+        XCTAssertTrue(loginTextField.waitForExistence(timeout: 10))
 
         loginTextField.tap()
-        loginTextField.typeText("// TODO: вставить сюда логин")
+        loginTextField.typeText("manikryte@yandex.ru")
         // Поможет скрыть клавиатуру
-        webView.swipeUp()
+        app.toolbars["Toolbar"].buttons["Done"].tap()
 
         let passwordTextField = webView.descendants(matching: .secureTextField).element
         XCTAssertTrue(passwordTextField.waitForExistence(timeout: 5))
 
         passwordTextField.tap()
-        passwordTextField.typeText("// TODO: вставить сюда пароль")
-        webView.swipeUp()
+        passwordTextField.typeText("H1l6KWq8N1")
+        app.toolbars["Toolbar"].buttons["Done"].tap()
 
-        webView.buttons["Login"].tap()
+        app.buttons["Login"].tap()
 
         let tablesQuery = app.tables
         let cell = tablesQuery.children(matching: .cell).element(boundBy: 0)
@@ -65,9 +65,9 @@ final class ImageFeedUITests: XCTestCase {
 
         cellToLike.buttons["LikeButton"].tap()
 
-        sleep(3)
+        sleep(5)
 
-        cellToLike.buttons["LikeButton"].tap()
+        cellToLike.buttons["DislikeButton"].tap()
 
         sleep(2)
 

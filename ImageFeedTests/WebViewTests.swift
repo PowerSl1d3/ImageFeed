@@ -24,11 +24,11 @@ final class WebViewPresenterSpy: WebViewOutput {
         return nil
     }
 
-    func webViewViewController(_ vc: ImageFeed.WebViewController, didAuthenticateWithCode code: String) {
+    func didAuthenticate(with code: String) {
 
     }
 
-    func webViewControllerDidCancel(_ vc: ImageFeed.WebViewController) {
+    func didTapCloseButton() {
 
     }
 }

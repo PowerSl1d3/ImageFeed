@@ -26,7 +26,7 @@ final class WebViewController: UIViewController {
     }
 
     @IBAction func didTapBack(_ sender: Any?) {
-        viewOutput?.webViewControllerDidCancel(self)
+        viewOutput?.didTapCloseButton()
     }
 }
 
@@ -51,7 +51,7 @@ extension WebViewController: WKNavigationDelegate {
         decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
     ) {
         if let code = code(from: navigationAction) {
-            viewOutput?.webViewViewController(self, didAuthenticateWithCode: code)
+            viewOutput?.didAuthenticate(with: code)
             decisionHandler(.cancel)
         } else {
             decisionHandler(.allow)

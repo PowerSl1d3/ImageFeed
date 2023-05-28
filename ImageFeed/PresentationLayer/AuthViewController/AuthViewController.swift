@@ -27,11 +27,11 @@ final class AuthViewController: UIViewController {
 }
 
 extension AuthViewController: WebViewModuleOutput {
-    func webViewViewController(_ vc: WebViewController, didAuthenticateWithCode code: String) {
+    func didAuthenticate(with code: String) {
         delegate?.authViewController(self, didAuthenticateWithCode: code)
     }
 
-    func webViewControllerDidCancel(_ vc: WebViewController) {
+    func didTapCloseButton() {
         dismiss(animated: true)
     }
 }

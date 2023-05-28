@@ -12,6 +12,6 @@ protocol WebViewModule {
 }
 
 protocol WebViewModuleOutput: AnyObject {
-    func webViewViewController(_ vc: WebViewController, didAuthenticateWithCode code: String)
-    func webViewControllerDidCancel(_ vc: WebViewController)
+    func didAuthenticate(with code: String)
+    func didTapCloseButton()
 }

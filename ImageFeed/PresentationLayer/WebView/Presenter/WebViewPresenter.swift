@@ -42,11 +42,11 @@ extension WebViewPresenter: WebViewOutput {
         authHelper.code(from: url)
     }
 
-    func webViewViewController(_ vc: WebViewController, didAuthenticateWithCode code: String) {
-        moduleOutput?.webViewViewController(vc, didAuthenticateWithCode: code)
+    func didAuthenticate(with code: String) {
+        moduleOutput?.didAuthenticate(with: code)
     }
 
-    func webViewControllerDidCancel(_ vc: WebViewController) {
-        moduleOutput?.webViewControllerDidCancel(vc)
+    func didTapCloseButton() {
+        moduleOutput?.didTapCloseButton()
     }
 }
