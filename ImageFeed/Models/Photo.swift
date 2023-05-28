@@ -45,3 +45,5 @@ struct Photo {
         isLiked = photoResult.likedByUser
     }
 }
+
+typealias Photos = [Photo]

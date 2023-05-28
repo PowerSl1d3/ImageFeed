@@ -7,11 +7,12 @@
 
 import Foundation
 
-final class ImagesListService {
+final class ImagesListService: ImagesListServiceProtocol {
     static let DidChangeNotification = Notification.Name(rawValue: "ImagesListServiceDidChange")
 
-    private (set) var photos: [Photo] = []
+    private(set) var photos = Photos()
     private var lastLoadedPage: Int?
+    private var lastPageLoaded: Bool = false
 
     private let oauth2TokenStorage = OAuth2TokenStorage()
     private let urlSession = URLSession.shared
@@ -23,7 +24,9 @@ final class ImagesListService {
             assertionFailure("Code was called from non-main thread")
         }
 
-        guard fetchImagesTask == nil, let token = oauth2TokenStorage.token else {
+        guard fetchImagesTask == nil,
+              let token = oauth2TokenStorage.token,
+              lastPageLoaded == false else {
             return
         }
 
@@ -44,8 +47,12 @@ final class ImagesListService {
                 photos.append(contentsOf: photosResult.map(Photo.init(photoResult:)))
                 lastLoadedPage = (lastLoadedPage ?? 0) + 1
                 NotificationCenter.default.post(name: Self.DidChangeNotification, object: nil)
-            case .failure:
-                assertionFailure("Something went wrong. Can't get images from UnsplashAPI")
+            case .failure(let error):
+                if let error = error as? NetworkError,
+                   case .httpStatusCode(let statusCode) = error,
+                   statusCode >= 500 {
+                    self.lastPageLoaded = true
+                }
             }
 
             self.fetchImagesTask = nil
@@ -54,7 +61,11 @@ final class ImagesListService {
         task.resume()
     }
 
-    func changeLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void, Error>) -> Void) {
+    func changeLike(
+        photoId: String,
+        isLike: Bool,
+        _ completion: @escaping (Result<Void, Error>) -> Void
+    ) {
         if !Thread.isMainThread {
             assertionFailure("Code was called from non-main thread")
         }

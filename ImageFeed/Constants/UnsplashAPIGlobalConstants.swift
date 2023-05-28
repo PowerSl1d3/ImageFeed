@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UnsplashAPIGlobalConstants {
+enum UnsplashAPIGlobalConstants {
     static let defaultBaseURL = URL(string: "https://unsplash.com")!
     static let defaultBaseAPIURL = URL(string: "https://api.unsplash.com")!
     static let unsplashAuthorizeURL = URL(string: "/oauth/authorize", relativeTo: defaultBaseURL)!
@@ -39,5 +39,41 @@ struct UnsplashAPIGlobalConstants {
         static let responseType = "code"
         static let accessScope = "public+read_user+write_likes"
         static let authorizationCode = "authorization_code"
+    }
+}
+
+struct AuthConfiguration {
+    let accessKey: String
+    let secretKey: String
+    let redirectURI: String
+    let accessScope: String
+    let defaultBaseURL: URL
+    let authURL: URL
+
+    init(
+        accessKey: String,
+        secretKey: String,
+        redirectURI: String,
+        accessScope: String,
+        defaultBaseURL: URL,
+        authURL: URL
+    ) {
+        self.accessKey = accessKey
+        self.secretKey = secretKey
+        self.redirectURI = redirectURI
+        self.accessScope = accessScope
+        self.defaultBaseURL = defaultBaseURL
+        self.authURL = authURL
+    }
+
+    static var standard: AuthConfiguration {
+        AuthConfiguration(
+            accessKey: UnsplashAPIGlobalConstants.QueryValues.accessKey,
+            secretKey: UnsplashAPIGlobalConstants.QueryValues.secretKey,
+            redirectURI: UnsplashAPIGlobalConstants.QueryValues.redirectURI,
+            accessScope: UnsplashAPIGlobalConstants.QueryValues.accessScope,
+            defaultBaseURL: UnsplashAPIGlobalConstants.defaultBaseURL,
+            authURL: UnsplashAPIGlobalConstants.unsplashAuthorizeURL
+        )
     }
 }
