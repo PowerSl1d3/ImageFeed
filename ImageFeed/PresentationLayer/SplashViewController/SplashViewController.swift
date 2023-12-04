@@ -149,9 +149,7 @@ private extension SplashViewController {
             return
         }
 
-        let tabBarController = UIStoryboard(name: "Main", bundle: .main)
-            .instantiateViewController(withIdentifier: "TabBarController")
-
+        let tabBarController = TabBarController()
         window.rootViewController = tabBarController
 
         UIView.transition(
