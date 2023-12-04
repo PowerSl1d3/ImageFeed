@@ -34,7 +34,7 @@ final class ProfileViewController: UIViewController {
     private let profileTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "YSDisplay-Bold", size: 23)
+        label.font = .ypBoldFont(ofSize: 23)
         label.textColor = .ypWhite
         label.text = "Екатерина Новикова"
 
@@ -44,7 +44,7 @@ final class ProfileViewController: UIViewController {
     private let profileSubtitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "YSDisplay-Medium", size: 13)
+        label.font = .ypMediumFont(ofSize: 13)
         label.textColor = .ypGray
         label.text = "@ekaterina_nov"
 
@@ -54,7 +54,7 @@ final class ProfileViewController: UIViewController {
     private let profileDescriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "YSDisplay-Medium", size: 13)
+        label.font = .ypMediumFont(ofSize: 13)
         label.textColor = .ypWhite
         label.text = "Hello, world!"
         label.numberOfLines = 0
