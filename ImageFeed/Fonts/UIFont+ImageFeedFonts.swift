@@ -17,11 +17,6 @@ extension UIFont {
     }
 
     static func ypBoldFont(ofSize size: CGFloat) -> UIFont {
-        UIFont.familyNames.forEach({ familyName in
-            let fontNames = UIFont.fontNames(forFamilyName: familyName)
-            print(familyName, fontNames)
-        })
-
-        return UIFont(name: "YandexSansDisplay-Bold", size: size)!
+        UIFont(name: "YandexSansDisplay-Bold", size: size)!
     }
 }

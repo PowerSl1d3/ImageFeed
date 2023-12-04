@@ -62,15 +62,7 @@ final class SplashViewController: UIViewController {
 
 extension SplashViewController {
     func performAuthorizationFlow() {
-        let authViewController = UIStoryboard(
-            name: "Main",
-            bundle: .main
-        ).instantiateViewController(withIdentifier: "AuthViewController")
-
-        guard let authViewController = authViewController as? AuthViewController else {
-            return
-        }
-
+        let authViewController = AuthViewController()
         authViewController.delegate = self
         authViewController.modalPresentationStyle = .fullScreen
 
