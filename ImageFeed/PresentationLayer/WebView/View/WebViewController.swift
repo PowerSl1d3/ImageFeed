@@ -11,17 +11,45 @@ import WebKit
 final class WebViewController: UIViewController {
     var viewOutput: WebViewOutput?
 
-    @IBOutlet private weak var webView: WKWebView!
-    @IBOutlet private weak var progressView: UIProgressView!
+    private let webView: WKWebView = {
+        let webView = WKWebView(frame: .zero)
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.accessibilityIdentifier = "UnsplashWebView"
+
+        return webView
+    }()
+
+    private let progressView: UIProgressView = {
+        let progressView = UIProgressView()
+        progressView.translatesAutoresizingMaskIntoConstraints = false
+
+        return progressView
+    }()
+
+    private let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "NavigationBarBackward"), for: .normal)
+        button.tintColor = .ypBlack
+
+        return button
+    }()
+
     private var webViewObserver: NSKeyValueObservation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        webView.accessibilityIdentifier = "UnsplashWebView"
+        backButton.addTarget(self, action: #selector(didTapBack), for: .touchUpInside)
+
+        view.addSubview(webView)
+        view.addSubview(progressView)
+        view.addSubview(backButton)
 
         webView.navigationDelegate = self
         setupObservers()
+        setupConstraints()
+
         viewOutput?.viewDidLoad()
     }
 
@@ -76,5 +104,25 @@ private extension WebViewController {
         }
 
         return nil
+    }
+}
+
+private extension WebViewController {
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            webView.topAnchor.constraint(equalTo: view.topAnchor),
+            webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            backButton.heightAnchor.constraint(equalToConstant: 24),
+            backButton.widthAnchor.constraint(equalToConstant: 24),
+
+            progressView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            progressView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            progressView.topAnchor.constraint(equalTo: backButton.bottomAnchor)
+        ])
     }
 }
