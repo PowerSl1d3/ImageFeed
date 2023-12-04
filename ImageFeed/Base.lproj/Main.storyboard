@@ -212,8 +212,9 @@
                                     <attributedString key="attributedTitle">
                                         <fragment content="Войти">
                                             <attributes>
-                                                <font key="NSFont" metaFont="system" size="17"/>
-                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="17" name="YandexSansDisplay-Regular"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
