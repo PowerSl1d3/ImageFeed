@@ -8,9 +8,5 @@
 import UIKit
 
 protocol ImagesListRouterInput {
-    func prepareForShowSingleImage(
-        for segue: UIStoryboardSegue,
-        sender: Any?,
-        photos: Photos
-    )
+    func presentSingleImage(withPhoto photo: Photo)
 }

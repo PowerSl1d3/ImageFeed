@@ -10,7 +10,7 @@ import UIKit
 final class ImagesListPresenter {
     weak var view: ImagesListViewInput!
     var stateStorage: ImagesListStateStorage = ImagesListStateStorage()
-    var router: ImagesListRouterInput = ImagesListRouter()
+    var router: ImagesListRouterInput!
     var imagesListService: ImagesListServiceProtocol = ImagesListService()
 
     private var imagesListServiceObserver: NSObjectProtocol?
@@ -40,8 +40,8 @@ extension ImagesListPresenter: ImagesListViewOutput {
         imagesListService.fetchPhotosNextPage()
     }
 
-    func prepareShowSingleImage(for segue: UIStoryboardSegue, sender: Any?) {
-        router.prepareForShowSingleImage(for: segue, sender: sender, photos: stateStorage.photos)
+    func didSelectRow(at indexPath: IndexPath) {
+        router.presentSingleImage(withPhoto: stateStorage.photos[indexPath.row])
     }
 
     func tableViewWillDisplayCell(at indexPath: IndexPath) {

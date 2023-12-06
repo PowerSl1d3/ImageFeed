@@ -8,15 +8,13 @@
 import UIKit
 
 final class ImagesListRouter: ImagesListRouterInput {
-    func prepareForShowSingleImage(
-        for segue: UIStoryboardSegue,
-        sender: Any?,
-        photos: Photos
-    ) {
-        if let viewController = segue.destination as? SingleImageViewController,
-           let indexPath = sender as? IndexPath {
-            let imageUrl = photos[indexPath.row].largeImageURL
-            viewController.imageUrl = imageUrl
-        }
+    weak var rootViewController: UIViewController?
+
+    func presentSingleImage(withPhoto photo: Photo) {
+        let singleImageViewController = SingleImageViewController()
+        singleImageViewController.imageUrl = photo.largeImageURL
+        singleImageViewController.modalPresentationStyle = .fullScreen
+
+        rootViewController?.present(singleImageViewController, animated: true)
     }
 }

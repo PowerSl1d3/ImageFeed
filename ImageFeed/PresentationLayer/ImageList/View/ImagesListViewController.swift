@@ -11,8 +11,6 @@ import Kingfisher
 final class ImagesListViewController: UIViewController {
     var viewOutput: (ImagesListViewOutput & ImageListCellDelegate)!
 
-    private let ShowSingleImageSegueIdentifier = "ShowSingleImage"
-
     @IBOutlet private weak var tableView: UITableView!
 
     private lazy var dateFormatter: DateFormatter = {
@@ -31,16 +29,6 @@ final class ImagesListViewController: UIViewController {
         tableView.estimatedRowHeight = 0
         viewOutput.viewDidLoad()
     }
-
-    // MARK: Segue
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == ShowSingleImageSegueIdentifier {
-           viewOutput.prepareShowSingleImage(for: segue, sender: sender)
-        } else {
-            super.prepare(for: segue, sender: sender)
-        }
-    }
 }
 
 extension ImagesListViewController: UITableViewDelegate {
@@ -49,7 +37,7 @@ extension ImagesListViewController: UITableViewDelegate {
         didSelectRowAt indexPath: IndexPath
     ) {
         tableView.deselectRow(at: indexPath, animated: false)
-        performSegue(withIdentifier: ShowSingleImageSegueIdentifier, sender: indexPath)
+        viewOutput.didSelectRow(at: indexPath)
     }
 
     func tableView(

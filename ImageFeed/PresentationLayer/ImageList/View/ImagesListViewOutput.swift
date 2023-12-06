@@ -11,6 +11,6 @@ protocol ImagesListViewOutput {
     var photos: Photos { get }
 
     func viewDidLoad()
-    func prepareShowSingleImage(for segue: UIStoryboardSegue, sender: Any?)
+    func didSelectRow(at indexPath: IndexPath)
     func tableViewWillDisplayCell(at indexPath: IndexPath)
 }
