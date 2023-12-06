@@ -29,7 +29,7 @@ final class WebViewController: UIViewController {
     private let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "NavigationBarBackward"), for: .normal)
+        button.setImage(UIImage(resource: .navigationBarBackward), for: .normal)
         button.tintColor = .ypBlack
 
         return button

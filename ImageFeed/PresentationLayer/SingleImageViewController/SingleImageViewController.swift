@@ -32,7 +32,7 @@ final class SingleImageViewController: UIViewController {
     private let shareButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "Sharing"), for: .normal)
+        button.setImage(UIImage(resource: .sharing), for: .normal)
         button.backgroundColor = .ypBlack
         button.tintColor = .ypWhite
         button.clipsToBounds = true
@@ -44,7 +44,7 @@ final class SingleImageViewController: UIViewController {
     private let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "NavigationBarBackward"), for: .normal)
+        button.setImage(UIImage(resource: .navigationBarBackward), for: .normal)
         button.tintColor = .ypBlack
 
         return button

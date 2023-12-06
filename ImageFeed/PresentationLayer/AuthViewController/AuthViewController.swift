@@ -14,7 +14,7 @@ final class AuthViewController: UIViewController {
     private let logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "UnsplashLogo")
+        imageView.image = UIImage(resource: .unsplashLogo)
 
         return imageView
     }()

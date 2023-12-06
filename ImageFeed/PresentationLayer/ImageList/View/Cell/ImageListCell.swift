@@ -75,12 +75,7 @@ final class ImageListCell: UITableViewCell {
     }
 
     func setIsLiked(_ isLiked: Bool) {
-        guard let likeButtonImage = UIImage(
-            named: isLiked ? "LikeHeartActive" : "LikeHeartDisabled"
-        ) else {
-            return
-        }
-        likeButton.setImage(likeButtonImage, for: .normal)
+        likeButton.setImage(UIImage(resource: isLiked ? .likeHeartActive : .likeHeartDisabled), for: .normal)
         likeButton.accessibilityIdentifier = isLiked ? "DislikeButton" : "LikeButton"
     }
 
@@ -97,7 +92,7 @@ final class ImageListCell: UITableViewCell {
 
         self.cellModel = cellModel
         photoImage.kf.indicatorType = .activity
-        photoImage.kf.setImage(with: imageUrl, placeholder: UIImage(named: "PhotoStub")) { _ in
+        photoImage.kf.setImage(with: imageUrl, placeholder: UIImage(resource: .photoStub)) { _ in
             setImageCompletion?()
         }
 

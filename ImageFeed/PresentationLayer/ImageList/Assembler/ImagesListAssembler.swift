@@ -12,7 +12,7 @@ final class ImagesListAssembler {
         let imagesListViewController = ImagesListViewController()
         imagesListViewController.tabBarItem = UITabBarItem(
             title: nil,
-            image: UIImage(named: "TabImageListActive"),
+            image: UIImage(resource: .tabImageListActive),
             selectedImage: nil
         )
 

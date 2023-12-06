@@ -12,7 +12,7 @@ final class ProfileViewController: UIViewController {
     var viewOutput: ProfileViewOutput?
 
     private let avatarImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "AnonymAvatar"))
+        let imageView = UIImageView(image: UIImage(resource: .anonymAvatar))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
