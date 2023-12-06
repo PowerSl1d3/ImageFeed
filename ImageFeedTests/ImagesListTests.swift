@@ -25,6 +25,10 @@ final class ImagesListPresenterSpy: ImagesListViewOutput, ImageListCellDelegate 
 
     }
 
+    func didSelectRow(at indexPath: IndexPath) {
+
+    }
+
     func didTapLikeButton(cell: ImageFeed.ImageListCell, cellModel: ImageFeed.Photo?) {
 
     }
