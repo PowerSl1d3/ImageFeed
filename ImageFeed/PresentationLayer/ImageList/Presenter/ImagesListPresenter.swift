@@ -67,13 +67,13 @@ extension ImagesListPresenter: ImageListCellDelegate {
               let photoIndex = photos.firstIndex(where: { $0.id == cellModel.id }) else {
             return
         }
-        cell.likeButton.isUserInteractionEnabled = false
+        cell.isLikeButtonUserInteractionEnabled = false
 
         imagesListService.changeLike(
             photoId: cellModel.id,
             isLike: !cellModel.isLiked
         ) { [weak self, weak cell] result in
-            defer { cell?.likeButton.isUserInteractionEnabled = true }
+            defer { cell?.isLikeButtonUserInteractionEnabled = true }
 
             guard let self, let cell, case .success = result else { return }
 

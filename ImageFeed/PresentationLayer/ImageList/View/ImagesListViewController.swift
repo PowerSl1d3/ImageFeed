@@ -11,7 +11,16 @@ import Kingfisher
 final class ImagesListViewController: UIViewController {
     var viewOutput: (ImagesListViewOutput & ImageListCellDelegate)!
 
-    @IBOutlet private weak var tableView: UITableView!
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(ImageListCell.self, forCellReuseIdentifier: ImageListCell.reuseIdentifier)
+        tableView.backgroundColor = .ypBlack
+        tableView.contentInset = UIEdgeInsets(top: 12, left: .zero, bottom: 12, right: .zero)
+        tableView.estimatedRowHeight = 0
+
+        return tableView
+    }()
 
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -25,8 +34,12 @@ final class ImagesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.contentInset = UIEdgeInsets(top: 12, left: .zero, bottom: 12, right: .zero)
-        tableView.estimatedRowHeight = 0
+        tableView.dataSource = self
+        tableView.delegate = self
+
+        view.addSubview(tableView)
+        setupConstraints()
+
         viewOutput.viewDidLoad()
     }
 }
@@ -101,6 +114,17 @@ extension ImagesListViewController: UITableViewDataSource {
         imageListCell.delegate = viewOutput
 
         return imageListCell
+    }
+}
+
+private extension ImagesListViewController {
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 }
 
