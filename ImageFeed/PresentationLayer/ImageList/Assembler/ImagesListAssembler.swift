@@ -17,8 +17,11 @@ final class ImagesListAssembler {
             return UIViewController()
         }
 
+        let router = ImagesListRouter()
         let presenter = ImagesListPresenter()
         presenter.view = imagesListViewController
+        presenter.router = router
+        router.rootViewController = imagesListViewController
         imagesListViewController.viewOutput = presenter
 
         return imagesListViewController

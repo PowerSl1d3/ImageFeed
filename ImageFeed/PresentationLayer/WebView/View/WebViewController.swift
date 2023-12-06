@@ -53,7 +53,7 @@ final class WebViewController: UIViewController {
         viewOutput?.viewDidLoad()
     }
 
-    @IBAction func didTapBack(_ sender: Any?) {
+    @objc func didTapBack() {
         viewOutput?.didTapCloseButton()
     }
 }

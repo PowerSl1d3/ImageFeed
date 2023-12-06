@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -98,99 +97,16 @@
                     <navigationItem key="navigationItem" id="F94-t4-jJf"/>
                     <connections>
                         <outlet property="tableView" destination="Jkm-48-XOL" id="Njd-fu-sQD"/>
-                        <segue destination="UME-vs-GKo" kind="presentation" identifier="ShowSingleImage" id="M0P-Hv-3US"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="988.54961832061065" y="17.605633802816904"/>
         </scene>
-        <!--Single Image View Controller-->
-        <scene sceneID="nbg-MS-ntF">
-            <objects>
-                <viewController modalPresentationStyle="fullScreen" id="UME-vs-GKo" customClass="SingleImageViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SBP-pU-bE6">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7c-WJ-2ZN">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="Maa-Cs-gQr">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="132"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Maa-Cs-gQr" secondAttribute="trailing" id="4fY-ed-Iav"/>
-                                    <constraint firstItem="Maa-Cs-gQr" firstAttribute="leading" secondItem="X7c-WJ-2ZN" secondAttribute="leading" id="8oz-bt-ykK"/>
-                                    <constraint firstItem="Maa-Cs-gQr" firstAttribute="top" secondItem="X7c-WJ-2ZN" secondAttribute="top" id="Fbc-1w-U9S"/>
-                                    <constraint firstAttribute="bottom" secondItem="Maa-Cs-gQr" secondAttribute="bottom" id="W71-kE-YA2"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="EKr-kL-rhX"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="FmP-2C-wvy"/>
-                                <connections>
-                                    <outlet property="delegate" destination="UME-vs-GKo" id="LtM-qL-NuR"/>
-                                </connections>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXP-dT-oFy" userLabel="Back Button">
-                                <rect key="frame" x="10" y="0.0" width="24" height="24"/>
-                                <accessibility key="accessibilityConfiguration" identifier="NavButtonBack"/>
-                                <color key="tintColor" name="YP White"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="NavigationBarBackward"/>
-                                <connections>
-                                    <action selector="didTapBackButton" destination="UME-vs-GKo" eventType="touchUpInside" id="GfF-9I-F2z"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9j-ps-8aO" userLabel="Share Button">
-                                <rect key="frame" x="171.66666666666666" y="785" width="50" height="50"/>
-                                <color key="backgroundColor" name="YP Black"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="biW-tG-eI6"/>
-                                    <constraint firstAttribute="height" constant="50" id="wh6-ad-iAe"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="Sharing"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="didTapShareButton" destination="UME-vs-GKo" eventType="touchUpInside" id="1fr-2b-m7h"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="OOC-Bq-H5b"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="eXP-dT-oFy" firstAttribute="leading" secondItem="OOC-Bq-H5b" secondAttribute="leading" constant="10" id="0hh-LB-WdM"/>
-                            <constraint firstItem="X7c-WJ-2ZN" firstAttribute="top" secondItem="SBP-pU-bE6" secondAttribute="top" id="5ZO-5a-gre"/>
-                            <constraint firstItem="OOC-Bq-H5b" firstAttribute="trailing" secondItem="X7c-WJ-2ZN" secondAttribute="trailing" id="8zJ-wi-EXX"/>
-                            <constraint firstItem="OOC-Bq-H5b" firstAttribute="bottom" secondItem="S9j-ps-8aO" secondAttribute="bottom" constant="17" id="GQF-K5-D4r"/>
-                            <constraint firstAttribute="bottom" secondItem="X7c-WJ-2ZN" secondAttribute="bottom" id="OuO-Du-8WA"/>
-                            <constraint firstItem="S9j-ps-8aO" firstAttribute="centerX" secondItem="OOC-Bq-H5b" secondAttribute="centerX" id="aUr-nx-mzD"/>
-                            <constraint firstItem="X7c-WJ-2ZN" firstAttribute="leading" secondItem="OOC-Bq-H5b" secondAttribute="leading" id="jz3-Aa-aZd"/>
-                            <constraint firstItem="eXP-dT-oFy" firstAttribute="top" secondItem="OOC-Bq-H5b" secondAttribute="top" id="vXp-NP-KSX"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="yk0-3c-3Mj"/>
-                    <connections>
-                        <outlet property="imageView" destination="Maa-Cs-gQr" id="b8K-hI-40d"/>
-                        <outlet property="scrollView" destination="X7c-WJ-2ZN" id="gr1-Z6-d6r"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bmE-2v-nfK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1973.2824427480916" y="17.605633802816904"/>
-        </scene>
     </scenes>
     <resources>
         <image name="0" width="200" height="132"/>
         <image name="LikeHeartActive" width="42" height="42"/>
-        <image name="NavigationBarBackward" width="24" height="24"/>
-        <image name="Sharing" width="30" height="30"/>
         <image name="TabImageListActive" width="30" height="30"/>
         <namedColor name="YP Black">
             <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -198,8 +114,5 @@
         <namedColor name="YP White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
