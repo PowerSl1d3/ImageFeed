@@ -7,13 +7,13 @@
 
 import UIKit
 import Kingfisher
+import SnapKit
 
 final class ProfileViewController: UIViewController {
     var viewOutput: ProfileViewOutput?
 
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(resource: .anonymAvatar))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
 
@@ -22,7 +22,6 @@ final class ProfileViewController: UIViewController {
 
     private let exitButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .ypRed
         button.setImage(UIImage(systemName: "ipad.and.arrow.forward"), for: .normal)
         button.contentMode = .scaleAspectFit
@@ -33,7 +32,6 @@ final class ProfileViewController: UIViewController {
 
     private let profileTitleLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .ypBoldFont(ofSize: 23)
         label.textColor = .ypWhite
         label.text = "Екатерина Новикова"
@@ -43,7 +41,6 @@ final class ProfileViewController: UIViewController {
 
     private let profileSubtitleLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .ypMediumFont(ofSize: 13)
         label.textColor = .ypGray
         label.text = "@ekaterina_nov"
@@ -53,7 +50,6 @@ final class ProfileViewController: UIViewController {
 
     private let profileDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .ypMediumFont(ofSize: 13)
         label.textColor = .ypWhite
         label.text = "Hello, world!"
@@ -95,56 +91,34 @@ extension ProfileViewController: ProfileViewInput {
 
 private extension ProfileViewController {
     func setupConstraints() {
-        NSLayoutConstraint.activate([
-            avatarImageView.leadingAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.leadingAnchor,
-                constant: 16
-            ),
-            avatarImageView.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor,
-                constant: 32
-            ),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 70),
-            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor)
-        ])
+        avatarImageView.snp.makeConstraints { make in
+            make.leading.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(32)
+            make.size.equalTo(70)
+        }
 
-        NSLayoutConstraint.activate([
-            exitButton.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor),
-            exitButton.trailingAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.trailingAnchor,
-                constant: -16
-            ),
-            exitButton.widthAnchor.constraint(equalToConstant: 20),
-            exitButton.heightAnchor.constraint(equalToConstant: 22)
-        ])
+        exitButton.snp.makeConstraints { make in
+            make.centerY.equalTo(avatarImageView.snp.centerY)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.width.equalTo(20)
+            make.height.equalTo(22)
+        }
 
-        NSLayoutConstraint.activate([
-            profileTitleLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
-            profileTitleLabel.topAnchor.constraint(
-                equalTo: avatarImageView.bottomAnchor,
-                constant: 8
-            )
-        ])
+        profileTitleLabel.snp.makeConstraints { make in
+            make.leading.equalTo(avatarImageView.snp.leading)
+            make.top.equalTo(avatarImageView.snp.bottom).offset(8)
+        }
 
-        NSLayoutConstraint.activate([
-            profileSubtitleLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
-            profileSubtitleLabel.topAnchor.constraint(
-                equalTo: profileTitleLabel.bottomAnchor,
-                constant: 8
-            )
-        ])
+        profileSubtitleLabel.snp.makeConstraints { make in
+            make.leading.equalTo(avatarImageView.snp.leading)
+            make.top.equalTo(profileTitleLabel.snp.bottom).offset(8)
+        }
 
-        NSLayoutConstraint.activate([
-            profileDescriptionLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
-            profileDescriptionLabel.topAnchor.constraint(
-                equalTo: profileSubtitleLabel.bottomAnchor,
-                constant: 8
-            ),
-            profileDescriptionLabel.trailingAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.trailingAnchor,
-                constant: -16
-            )
-        ])
+        profileDescriptionLabel.snp.makeConstraints { make in
+            make.leading.equalTo(avatarImageView.snp.leading)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(profileSubtitleLabel.snp.bottom).offset(8)
+        }
     }
 
     func setupViews() {
