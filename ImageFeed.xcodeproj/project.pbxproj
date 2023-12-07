@@ -107,6 +107,8 @@
 		90098F162B1D7F580077ED7B /* YS Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Bold.ttf"; sourceTree = "<group>"; };
 		90098F172B1D7F590077ED7B /* YS Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Medium.ttf"; sourceTree = "<group>"; };
 		90098F182B1D7F590077ED7B /* YS Display-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Regular.ttf"; sourceTree = "<group>"; };
+		900AC8732B21879C0072CA86 /* ImageFeedUITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ImageFeedUITests.xctestplan; sourceTree = "<group>"; };
+		900AC8752B2189220072CA86 /* ImageFeedTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ImageFeedTests.xctestplan; sourceTree = "<group>"; };
 		9012909A2A000D95004B3271 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		9012909C2A000DB7004B3271 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		9021207329F7F94B003A9595 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				90CFC93529EAD8AE004260A4 /* Constants */,
 				90F5E4C229EAA56000F288D6 /* Resources */,
 				9072227A29F3B67900413039 /* Extensions */,
+				900AC8742B2187AE0072CA86 /* TestPlans */,
 				90079AA42998ED7700CF86D2 /* Main.storyboard */,
 				90079AA92998ED7800CF86D2 /* LaunchScreen.storyboard */,
 				90079AAC2998ED7800CF86D2 /* Info.plist */,
@@ -240,6 +243,15 @@
 				90098F142B1D7DD10077ED7B /* UIFont+ImageFeedFonts.swift */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		900AC8742B2187AE0072CA86 /* TestPlans */ = {
+			isa = PBXGroup;
+			children = (
+				900AC8752B2189220072CA86 /* ImageFeedTests.xctestplan */,
+				900AC8732B21879C0072CA86 /* ImageFeedUITests.xctestplan */,
+			);
+			path = TestPlans;
 			sourceTree = "<group>";
 		};
 		901290992A000D7C004B3271 /* AlertPresenter */ = {

@@ -22,6 +22,7 @@ final class AuthViewController: UIViewController {
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "Authenticate"
 
         let attributedTitle = NSAttributedString(
             string: "Войти",

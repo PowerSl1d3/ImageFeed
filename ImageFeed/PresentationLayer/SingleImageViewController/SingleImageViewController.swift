@@ -46,6 +46,7 @@ final class SingleImageViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(resource: .navigationBarBackward), for: .normal)
         button.tintColor = .ypBlack
+        button.accessibilityIdentifier = "NavButtonBack"
 
         return button
     }()
