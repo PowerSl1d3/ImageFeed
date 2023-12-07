@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "A577D45B-D3D7-433E-B6E0-7FBBAC451182",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:ImageFeed.xcodeproj",
+        "identifier" : "903DBDC52A151BC800FD73F1",
+        "name" : "ImageFeedTests"
+      }
+    }
+  ],
+  "version" : 1
+}

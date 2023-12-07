@@ -72,7 +72,6 @@
 		90E4F85B2A13F159008ADA7A /* WebViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E4F85A2A13F159008ADA7A /* WebViewModule.swift */; };
 		90E80DB32A18ADFD002A83AB /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E80DB22A18ADFD002A83AB /* ProfileTests.swift */; };
 		90E80DB62A18B3C5002A83AB /* ProfileServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E80DB52A18B3C5002A83AB /* ProfileServiceProtocol.swift */; };
-		90EA0B9D29D99356000A2BB9 /* UIColor+ImageFeedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA0B9C29D99356000A2BB9 /* UIColor+ImageFeedColors.swift */; };
 		90EE1BB42A0B212800BD090D /* PhotoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE1BB32A0B212800BD090D /* PhotoResult.swift */; };
 		90EE1BB62A0B21FB00BD090D /* UrlsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE1BB52A0B21FB00BD090D /* UrlsResult.swift */; };
 		90F165272A10605C00E619AD /* WebView+Unsplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F165262A10605C00E619AD /* WebView+Unsplash.swift */; };
@@ -108,6 +107,8 @@
 		90098F162B1D7F580077ED7B /* YS Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Bold.ttf"; sourceTree = "<group>"; };
 		90098F172B1D7F590077ED7B /* YS Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Medium.ttf"; sourceTree = "<group>"; };
 		90098F182B1D7F590077ED7B /* YS Display-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Regular.ttf"; sourceTree = "<group>"; };
+		900AC8732B21879C0072CA86 /* ImageFeedUITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ImageFeedUITests.xctestplan; sourceTree = "<group>"; };
+		900AC8752B2189220072CA86 /* ImageFeedTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ImageFeedTests.xctestplan; sourceTree = "<group>"; };
 		9012909A2A000D95004B3271 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		9012909C2A000DB7004B3271 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		9021207329F7F94B003A9595 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
@@ -162,7 +163,6 @@
 		90E4F85A2A13F159008ADA7A /* WebViewModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModule.swift; sourceTree = "<group>"; };
 		90E80DB22A18ADFD002A83AB /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		90E80DB52A18B3C5002A83AB /* ProfileServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileServiceProtocol.swift; sourceTree = "<group>"; };
-		90EA0B9C29D99356000A2BB9 /* UIColor+ImageFeedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ImageFeedColors.swift"; sourceTree = "<group>"; };
 		90EE1BB32A0B212800BD090D /* PhotoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResult.swift; sourceTree = "<group>"; };
 		90EE1BB52A0B21FB00BD090D /* UrlsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlsResult.swift; sourceTree = "<group>"; };
 		90F165262A10605C00E619AD /* WebView+Unsplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebView+Unsplash.swift"; sourceTree = "<group>"; };
@@ -226,10 +226,10 @@
 				9082649429F164D900701B58 /* Services */,
 				903DBDBD2A1514BB00FD73F1 /* Helpers */,
 				90098F132B1D7DB80077ED7B /* Fonts */,
-				90EA0B9B29D9933F000A2BB9 /* Colors */,
 				90CFC93529EAD8AE004260A4 /* Constants */,
 				90F5E4C229EAA56000F288D6 /* Resources */,
 				9072227A29F3B67900413039 /* Extensions */,
+				900AC8742B2187AE0072CA86 /* TestPlans */,
 				90079AA42998ED7700CF86D2 /* Main.storyboard */,
 				90079AA92998ED7800CF86D2 /* LaunchScreen.storyboard */,
 				90079AAC2998ED7800CF86D2 /* Info.plist */,
@@ -243,6 +243,15 @@
 				90098F142B1D7DD10077ED7B /* UIFont+ImageFeedFonts.swift */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		900AC8742B2187AE0072CA86 /* TestPlans */ = {
+			isa = PBXGroup;
+			children = (
+				900AC8752B2189220072CA86 /* ImageFeedTests.xctestplan */,
+				900AC8732B21879C0072CA86 /* ImageFeedUITests.xctestplan */,
+			);
+			path = TestPlans;
 			sourceTree = "<group>";
 		};
 		901290992A000D7C004B3271 /* AlertPresenter */ = {
@@ -565,14 +574,6 @@
 			path = ProfileService;
 			sourceTree = "<group>";
 		};
-		90EA0B9B29D9933F000A2BB9 /* Colors */ = {
-			isa = PBXGroup;
-			children = (
-				90EA0B9C29D99356000A2BB9 /* UIColor+ImageFeedColors.swift */,
-			);
-			path = Colors;
-			sourceTree = "<group>";
-		};
 		90F5E4C229EAA56000F288D6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,7 +662,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					90079A9A2998ED7700CF86D2 = {
 						CreatedOnToolsVersion = 14.2;
@@ -773,7 +774,6 @@
 				9057FDF52A19A5A8006D1425 /* ImagesListRouterInput.swift in Sources */,
 				9012909B2A000D95004B3271 /* AlertPresenter.swift in Sources */,
 				9021207629F7F978003A9595 /* ProfileResult.swift in Sources */,
-				90EA0B9D29D99356000A2BB9 /* UIColor+ImageFeedColors.swift in Sources */,
 				90EE1BB42A0B212800BD090D /* PhotoResult.swift in Sources */,
 				905C149629FD2A1E00920CDF /* UserRusult.swift in Sources */,
 				9042CDD82A17C4F00085B36D /* ProfileViewInput.swift in Sources */,
@@ -852,6 +852,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -884,6 +885,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -912,6 +914,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -944,6 +947,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -974,7 +978,6 @@
 				INFOPLIST_FILE = ImageFeed/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1006,7 +1009,6 @@
 				INFOPLIST_FILE = ImageFeed/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

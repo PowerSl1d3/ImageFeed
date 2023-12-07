@@ -14,7 +14,7 @@ final class AuthViewController: UIViewController {
     private let logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "UnsplashLogo")
+        imageView.image = UIImage(resource: .unsplashLogo)
 
         return imageView
     }()
@@ -22,6 +22,7 @@ final class AuthViewController: UIViewController {
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "Authenticate"
 
         let attributedTitle = NSAttributedString(
             string: "Войти",

@@ -9,7 +9,7 @@ import UIKit
 
 final class SplashViewController: UIViewController {
     private let splashLogo: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "PracticumLogo"))
+        let imageView = UIImageView(image: UIImage(resource: .practicumLogo))
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
         return imageView

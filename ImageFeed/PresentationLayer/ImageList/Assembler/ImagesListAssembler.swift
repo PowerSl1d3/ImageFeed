@@ -9,13 +9,12 @@ import UIKit
 
 final class ImagesListAssembler {
     static func assemble() -> UIViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-
-        guard let imagesListViewController = storyboard.instantiateViewController(
-            withIdentifier: "ImagesListViewController"
-        ) as? ImagesListViewController else {
-            return UIViewController()
-        }
+        let imagesListViewController = ImagesListViewController()
+        imagesListViewController.tabBarItem = UITabBarItem(
+            title: nil,
+            image: UIImage(resource: .tabImageListActive),
+            selectedImage: nil
+        )
 
         let router = ImagesListRouter()
         let presenter = ImagesListPresenter()

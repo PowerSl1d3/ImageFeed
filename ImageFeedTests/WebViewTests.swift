@@ -53,8 +53,7 @@ final class WebViewControllerSpy: WebViewInput {
 final class WebViewTests: XCTestCase {
     func testViewControllerCallsViewDidLoad() {
         // Given
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        let viewController = WebViewController()
         let presenter = WebViewPresenterSpy()
         viewController.viewOutput = presenter
         presenter.view = viewController
