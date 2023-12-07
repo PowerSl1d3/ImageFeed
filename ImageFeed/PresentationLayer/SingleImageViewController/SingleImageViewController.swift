@@ -68,6 +68,7 @@ final class SingleImageViewController: UIViewController {
         view.backgroundColor = .ypBlack
         scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 1.25
+        scrollView.delegate = self
         updateImageView()
         setupConstraints()
     }

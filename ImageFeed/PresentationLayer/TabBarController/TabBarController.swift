@@ -8,7 +8,7 @@
 import UIKit
 
 final class TabBarController: UITabBarController {
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init() {
         super.init(nibName: nil, bundle: nil)
 
         let imagesListViewController = ImagesListAssembler.assemble()
