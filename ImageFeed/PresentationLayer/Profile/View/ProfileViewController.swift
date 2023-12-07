@@ -10,12 +10,15 @@ import Kingfisher
 import SnapKit
 
 final class ProfileViewController: UIViewController {
+
     var viewOutput: ProfileViewOutput?
+    var didSetupConstraints = false
 
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(resource: .anonymAvatar))
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 35
 
         return imageView
     }()
@@ -58,21 +61,30 @@ final class ProfileViewController: UIViewController {
         return label
     }()
 
+    init() {
+        super.init(nibName: nil, bundle: nil)
+
+        setupTabBarItem()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        exitButton.addTarget(self, action: #selector(didTapProfileExitButton), for: .touchUpInside)
-
-        view.addSubview(avatarImageView)
-        view.addSubview(exitButton)
-        view.addSubview(profileTitleLabel)
-        view.addSubview(profileSubtitleLabel)
-        view.addSubview(profileDescriptionLabel)
-
-        setupConstraints()
         setupViews()
-
         viewOutput?.viewDidLoad()
+    }
+
+    override func updateViewConstraints() {
+        if !didSetupConstraints {
+            setupConstraints()
+            didSetupConstraints = true
+        }
+
+        super.updateViewConstraints()
     }
 }
 
@@ -122,8 +134,24 @@ private extension ProfileViewController {
     }
 
     func setupViews() {
+        exitButton.addTarget(self, action: #selector(didTapProfileExitButton), for: .touchUpInside)
+
+        view.addSubview(avatarImageView)
+        view.addSubview(exitButton)
+        view.addSubview(profileTitleLabel)
+        view.addSubview(profileSubtitleLabel)
+        view.addSubview(profileDescriptionLabel)
+
         view.backgroundColor = .ypBlack
-        avatarImageView.layer.cornerRadius = 35
+        view.setNeedsUpdateConstraints()
+    }
+
+    func setupTabBarItem() {
+        tabBarItem = UITabBarItem(
+            title: nil,
+            image: UIImage(resource: .tabProfileActive),
+            selectedImage: nil
+        )
     }
 }
 

@@ -10,11 +10,6 @@ import UIKit
 final class ProfileAssembler {
     static func assemble() -> UIViewController {
         let profileViewController = ProfileViewController()
-        profileViewController.tabBarItem = UITabBarItem(
-            title: nil,
-            image: UIImage(resource: .tabProfileActive),
-            selectedImage: nil
-        )
 
         let router = ProfileRouter()
         router.view = profileViewController
