@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Swinject
 
 final class SplashViewController: UIViewController {
+
+    var resolver: Resolver!
+
     private let splashLogo: UIImageView = {
         let imageView = UIImageView(image: UIImage(resource: .practicumLogo))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -141,7 +145,7 @@ private extension SplashViewController {
             return
         }
 
-        let tabBarController = TabBarController()
+        let tabBarController = resolver.resolve(TabBarController.self)!
         window.rootViewController = tabBarController
 
         UIView.transition(

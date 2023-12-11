@@ -8,15 +8,13 @@
 import UIKit
 
 final class TabBarController: UITabBarController {
+    var imagesListViewController: UIViewController!
+    var profileViewController: UIViewController!
+
     init() {
         super.init(nibName: nil, bundle: nil)
-
-        let imagesListViewController = ImagesListAssembler.assemble()
-        let profileViewController = ProfileAssembler.assemble()
-
-        viewControllers = [imagesListViewController, profileViewController]
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -28,5 +26,13 @@ final class TabBarController: UITabBarController {
         appearance.backgroundColor = .ypBlack
 
         tabBar.standardAppearance = appearance
+    }
+
+    // Проставляем вью контроллеры тут, поскольку на момент инициализации таб бара вызывается `viewDidLoad`
+    // в котором они ещё не проинициализированы
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        viewControllers = [imagesListViewController, profileViewController]
     }
 }

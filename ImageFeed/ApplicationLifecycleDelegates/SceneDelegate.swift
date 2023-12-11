@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let assembler = PresentationLayerAssembler.assembler
 
 
     func scene(
@@ -19,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = SplashViewController()
+        window?.rootViewController = assembler.resolver.resolve(SplashViewController.self)!
         window?.makeKeyAndVisible()
     }
 

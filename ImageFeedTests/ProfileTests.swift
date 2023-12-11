@@ -86,7 +86,7 @@ final class ProfileTests: XCTestCase {
     func testProfileAssembledDidAssembleModule() throws {
         // Given
         // When
-        let viewController = ProfileAssembler.assemble()
+        let viewController = ProfileAssembly.assemble()
 
         // Then
         let profileViewController = viewController as? ProfileViewController

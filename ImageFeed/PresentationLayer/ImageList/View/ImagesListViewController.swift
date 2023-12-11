@@ -11,6 +11,16 @@ import Kingfisher
 final class ImagesListViewController: UIViewController {
     var viewOutput: (ImagesListViewOutput & ImageListCellDelegate)!
 
+    init() {
+        super.init(nibName: nil, bundle: nil)
+
+        setupTabBarItem()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -125,6 +135,14 @@ private extension ImagesListViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+
+    func setupTabBarItem() {
+        tabBarItem = UITabBarItem(
+            title: nil,
+            image: UIImage(resource: .tabImageListActive),
+            selectedImage: nil
+        )
     }
 }
 

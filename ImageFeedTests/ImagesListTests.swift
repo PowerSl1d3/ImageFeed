@@ -81,7 +81,7 @@ final class ImagesListTests: XCTestCase {
     func testImagesListAssembledDidAssembleModule() throws {
         // Given
         // When
-        let viewController = ImagesListAssembler.assemble()
+        let viewController = ImagesListAssembly.assemble()
 
         // Then
         let imagesListViewController = viewController as? ImagesListViewController
@@ -96,7 +96,7 @@ final class ImagesListTests: XCTestCase {
 
     func testImagesListViewControllerCallsViewDidLoad() {
         // Given
-        let viewController = ImagesListAssembler.assemble() as! ImagesListViewController
+        let viewController = ImagesListAssembly.assemble() as! ImagesListViewController
         let presenter = ImagesListPresenterSpy()
         viewController.viewOutput = presenter
 
@@ -111,7 +111,7 @@ final class ImagesListTests: XCTestCase {
 
     func testImagesListPresenterCallsFetchPhotosNextPage() {
         // Given
-        let viewController = ImagesListAssembler.assemble() as! ImagesListViewController
+        let viewController = ImagesListAssembly.assemble() as! ImagesListViewController
         let presenter = viewController.viewOutput as! ImagesListPresenter
         let imagesListService = ImagesListServiceSpy()
         presenter.imagesListService = imagesListService
