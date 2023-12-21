@@ -59,6 +59,13 @@
 		90897EFF2A0D261F00B899C3 /* ImageListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90897EFE2A0D261F00B899C3 /* ImageListCellDelegate.swift */; };
 		9093C8022A008FBB00082DC8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9093C8012A008FBB00082DC8 /* Kingfisher */; };
 		9097BC4029B6980A007428F3 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9097BC3F29B6980A007428F3 /* SingleImageViewController.swift */; };
+		909A71932B26D83E001C64C6 /* SplashViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909A71922B26D83E001C64C6 /* SplashViewInput.swift */; };
+		909A71952B26D86E001C64C6 /* SplashViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909A71942B26D86E001C64C6 /* SplashViewOutput.swift */; };
+		909A71972B26D95A001C64C6 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909A71962B26D95A001C64C6 /* SplashPresenter.swift */; };
+		90A84B432B282D5E00130FA7 /* SplashStateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A84B422B282D5E00130FA7 /* SplashStateStorage.swift */; };
+		90A84B462B282FB200130FA7 /* SplashRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A84B452B282FB200130FA7 /* SplashRouterInput.swift */; };
+		90A84B482B282FD400130FA7 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A84B472B282FD400130FA7 /* SplashRouter.swift */; };
+		90A84B4A2B2832E500130FA7 /* SplashRouterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A84B492B2832E500130FA7 /* SplashRouterOutput.swift */; };
 		90A9249B29B40B2800893085 /* ImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A9249A29B40B2800893085 /* ImageListCell.swift */; };
 		90A924AB29B464FC00893085 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A924AA29B464FC00893085 /* ProfileViewController.swift */; };
 		90BDE4D72A18B7800028B1C7 /* ProfileImageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BDE4D62A18B7800028B1C7 /* ProfileImageServiceProtocol.swift */; };
@@ -154,6 +161,13 @@
 		908841FE29EEC1FA001C4372 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		90897EFE2A0D261F00B899C3 /* ImageListCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCellDelegate.swift; sourceTree = "<group>"; };
 		9097BC3F29B6980A007428F3 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
+		909A71922B26D83E001C64C6 /* SplashViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewInput.swift; sourceTree = "<group>"; };
+		909A71942B26D86E001C64C6 /* SplashViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewOutput.swift; sourceTree = "<group>"; };
+		909A71962B26D95A001C64C6 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
+		90A84B422B282D5E00130FA7 /* SplashStateStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashStateStorage.swift; sourceTree = "<group>"; };
+		90A84B452B282FB200130FA7 /* SplashRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouterInput.swift; sourceTree = "<group>"; };
+		90A84B472B282FD400130FA7 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
+		90A84B492B2832E500130FA7 /* SplashRouterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouterOutput.swift; sourceTree = "<group>"; };
 		90A9249A29B40B2800893085 /* ImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCell.swift; sourceTree = "<group>"; };
 		90A924AA29B464FC00893085 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		90BDE4D62A18B7800028B1C7 /* ProfileImageServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageServiceProtocol.swift; sourceTree = "<group>"; };
@@ -273,6 +287,8 @@
 		901DB2DE2B235AFC00AA6965 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				909A71922B26D83E001C64C6 /* SplashViewInput.swift */,
+				909A71942B26D86E001C64C6 /* SplashViewOutput.swift */,
 				9072227329F394C500413039 /* SplashViewController.swift */,
 			);
 			path = View;
@@ -415,6 +431,8 @@
 			isa = PBXGroup;
 			children = (
 				901DB2DF2B235B0200AA6965 /* Assembly */,
+				909A71912B26D82C001C64C6 /* Presenter */,
+				90A84B442B282F9A00130FA7 /* Router */,
 				901DB2DE2B235AFC00AA6965 /* View */,
 			);
 			path = Splash;
@@ -499,6 +517,25 @@
 				9072227529F396CB00413039 /* AuthViewControllerDelegate.swift */,
 			);
 			path = AuthViewController;
+			sourceTree = "<group>";
+		};
+		909A71912B26D82C001C64C6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				909A71962B26D95A001C64C6 /* SplashPresenter.swift */,
+				90A84B422B282D5E00130FA7 /* SplashStateStorage.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		90A84B442B282F9A00130FA7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				90A84B452B282FB200130FA7 /* SplashRouterInput.swift */,
+				90A84B492B2832E500130FA7 /* SplashRouterOutput.swift */,
+				90A84B472B282FD400130FA7 /* SplashRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		90A9249C29B40B4B00893085 /* ImageList */ = {
@@ -798,12 +835,15 @@
 				90D936D12A0A76B9009B29EC /* TabBarController.swift in Sources */,
 				90E4F85B2A13F159008ADA7A /* WebViewModule.swift in Sources */,
 				9072227429F394C500413039 /* SplashViewController.swift in Sources */,
+				90A84B462B282FB200130FA7 /* SplashRouterInput.swift in Sources */,
 				90BDE4D72A18B7800028B1C7 /* ProfileImageServiceProtocol.swift in Sources */,
 				90098F152B1D7DD10077ED7B /* UIFont+ImageFeedFonts.swift in Sources */,
 				9057FDED2A19A356006D1425 /* ImagesListPresenter.swift in Sources */,
+				909A71972B26D95A001C64C6 /* SplashPresenter.swift in Sources */,
 				9082649329F1636600701B58 /* OAuthTokenResponseBody.swift in Sources */,
 				9042CDDF2A17CEFC0085B36D /* ProfileRouter.swift in Sources */,
 				90F76F982B21AADE00CD8014 /* PresentationLayerAssembler.swift in Sources */,
+				90A84B482B282FD400130FA7 /* SplashRouter.swift in Sources */,
 				90F165272A10605C00E619AD /* WebView+Unsplash.swift in Sources */,
 				903DBDC12A15163300FD73F1 /* AuthHelper.swift in Sources */,
 				9057FDF02A19A378006D1425 /* ImagesListViewInput.swift in Sources */,
@@ -827,6 +867,7 @@
 				90A924AB29B464FC00893085 /* ProfileViewController.swift in Sources */,
 				9042CDDA2A17C5020085B36D /* ProfileViewOutput.swift in Sources */,
 				9057FDF52A19A5A8006D1425 /* ImagesListRouterInput.swift in Sources */,
+				909A71932B26D83E001C64C6 /* SplashViewInput.swift in Sources */,
 				9012909B2A000D95004B3271 /* AlertPresenter.swift in Sources */,
 				9021207629F7F978003A9595 /* ProfileResult.swift in Sources */,
 				90EE1BB42A0B212800BD090D /* PhotoResult.swift in Sources */,
@@ -834,10 +875,13 @@
 				9042CDD82A17C4F00085B36D /* ProfileViewInput.swift in Sources */,
 				90079A9F2998ED7700CF86D2 /* AppDelegate.swift in Sources */,
 				9097BC4029B6980A007428F3 /* SingleImageViewController.swift in Sources */,
+				90A84B4A2B2832E500130FA7 /* SplashRouterOutput.swift in Sources */,
+				90A84B432B282D5E00130FA7 /* SplashStateStorage.swift in Sources */,
 				9082649829F16A5200701B58 /* URLRequest+Unsplash.swift in Sources */,
 				9057FDF22A19A398006D1425 /* ImagesListViewOutput.swift in Sources */,
 				903DBDBF2A1514D600FD73F1 /* AuthHelperProtocol.swift in Sources */,
 				90E4F8502A13EDB2008ADA7A /* WebViewPresenter.swift in Sources */,
+				909A71952B26D86E001C64C6 /* SplashViewOutput.swift in Sources */,
 				9082649A29F16BBE00701B58 /* URLSession+Unsplash.swift in Sources */,
 				90079AA12998ED7700CF86D2 /* SceneDelegate.swift in Sources */,
 				90CFC93729EAD8D5004260A4 /* UnsplashAPIGlobalConstants.swift in Sources */,

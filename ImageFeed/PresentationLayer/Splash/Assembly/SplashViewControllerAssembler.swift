@@ -12,7 +12,22 @@ final class SplashViewControllerAssembly: Assembly {
     func assemble(container: Container) {
         container.register(SplashViewController.self) { resolver in
             let viewController = SplashViewController()
-            viewController.resolver = resolver
+            let stateStorage = SplashStateStorage()
+            let presenter = SplashPresenter()
+            let router = SplashRouter()
+
+            viewController.viewOutput = presenter
+
+            let alertPresenter = AlertPresenter(viewController: viewController)
+
+            presenter.view = viewController
+            presenter.router = router
+            presenter.stateStorage = stateStorage
+            presenter.alertPresenter = alertPresenter
+
+            router.resolver = resolver
+            router.output = presenter
+            router.viewController = viewController
 
             return viewController
         }
