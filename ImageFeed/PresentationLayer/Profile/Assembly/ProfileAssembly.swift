@@ -13,14 +13,14 @@ final class ProfileAssembly: Assembly {
         container.register(ProfileViewController.self) { _ in
             let profileViewController = ProfileViewController()
 
-            let router = ProfileRouter()
-            router.view = profileViewController
-            router.alertPresenter = AlertPresenter(viewController: profileViewController)
-
-            let profilePresenter = ProfilePresenter()
-            profileViewController.viewOutput = profilePresenter
-            profilePresenter.view = profileViewController
-            profilePresenter.router = router
+//            let router = ProfileRouter()
+//            router.view = profileViewController
+//            router.alertPresenter = AlertPresenterService(viewController: profileViewController)
+//
+//            let profilePresenter = ProfilePresenter()
+//            profileViewController.viewOutput = profilePresenter
+//            profilePresenter.view = profileViewController
+//            profilePresenter.router = router
 
             return profileViewController
         }

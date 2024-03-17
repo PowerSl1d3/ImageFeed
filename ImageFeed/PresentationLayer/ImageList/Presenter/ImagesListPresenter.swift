@@ -8,12 +8,26 @@
 import UIKit
 
 final class ImagesListPresenter {
-    weak var view: ImagesListViewInput!
-    var stateStorage: ImagesListStateStorage = ImagesListStateStorage()
-    var router: ImagesListRouterInput!
-    var imagesListService: ImagesListServiceProtocol = ImagesListService()
+    weak var view: ImagesListViewInput?
+    let stateStorage: ImagesListStateStorage
+    let router: ImagesListRouterInput
+    let imagesListService: ImagesListServiceProtocol
 
     private var imagesListServiceObserver: NSObjectProtocol?
+
+    init(
+        view: ImagesListViewInput? = nil,
+        stateStorage: ImagesListStateStorage,
+        router: ImagesListRouterInput,
+        imagesListService: ImagesListServiceProtocol,
+        imagesListServiceObserver: NSObjectProtocol? = nil
+    ) {
+        self.view = view
+        self.stateStorage = stateStorage
+        self.router = router
+        self.imagesListService = imagesListService
+        self.imagesListServiceObserver = imagesListServiceObserver
+    }
 }
 
 extension ImagesListPresenter: ImagesListViewOutput {
@@ -56,7 +70,7 @@ extension ImagesListPresenter {
         let newCount = imagesListService.photos.count
         photos = imagesListService.photos
         if oldCount != newCount {
-            view.updateTableViewAnimated(oldCount: oldCount, newCount: newCount)
+            view?.updateTableViewAnimated(oldCount: oldCount, newCount: newCount)
         }
     }
 }

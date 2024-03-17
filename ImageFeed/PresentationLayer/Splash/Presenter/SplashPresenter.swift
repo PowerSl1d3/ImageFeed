@@ -12,7 +12,7 @@ final class SplashPresenter {
     var router: SplashRouterInput!
     var stateStorage: SplashStateStorage!
 
-    var alertPresenter: AlertPresenterProtocol!
+    var alertPresenter: AlertPresenterServiceProtocol!
 
     private let oauth2Service = OAuth2Service()
     private let profileService = ProfileService.shared

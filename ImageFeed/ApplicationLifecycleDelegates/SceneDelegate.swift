@@ -11,7 +11,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     let assembler = PresentationLayerAssembler.assembler
+    let rootComponent: RootComponent = {
+        registerProviderFactories()
 
+        return RootComponent()
+    }()
 
     func scene(
         _ scene: UIScene,
@@ -20,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = assembler.resolver.resolve(SplashViewController.self)!
+        window?.rootViewController = rootComponent.splashComponent.splashViewController
         window?.makeKeyAndVisible()
     }
 
