@@ -51,7 +51,7 @@ final class SingleImageViewController: UIViewController {
         return button
     }()
 
-    private var alertPresenter: AlertPresenterProtocol = AlertPresenter()
+    private var alertPresenter: AlertPresenterServiceProtocol = AlertPresenterService()
     
     override func viewDidLoad() {
         super.viewDidLoad()

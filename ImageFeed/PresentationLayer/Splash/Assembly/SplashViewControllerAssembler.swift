@@ -7,6 +7,7 @@
 
 import UIKit
 import Swinject
+import NeedleFoundation
 
 final class SplashViewControllerAssembly: Assembly {
     func assemble(container: Container) {
@@ -14,20 +15,20 @@ final class SplashViewControllerAssembly: Assembly {
             let viewController = SplashViewController()
             let stateStorage = SplashStateStorage()
             let presenter = SplashPresenter()
-            let router = SplashRouter()
+//            let router = SplashRouter()
 
             viewController.viewOutput = presenter
 
-            let alertPresenter = AlertPresenter(viewController: viewController)
+            let alertPresenter = AlertPresenterService(viewController: viewController)
 
             presenter.view = viewController
-            presenter.router = router
+//            presenter.router = router
             presenter.stateStorage = stateStorage
             presenter.alertPresenter = alertPresenter
 
-            router.resolver = resolver
-            router.output = presenter
-            router.viewController = viewController
+//            router.resolver = resolver
+//            router.output = presenter
+//            router.viewController = viewController
 
             return viewController
         }

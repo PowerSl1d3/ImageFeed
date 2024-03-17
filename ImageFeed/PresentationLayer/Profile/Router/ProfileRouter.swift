@@ -7,10 +7,19 @@
 
 import UIKit
 
-final class ProfileRouter: ProfileRouterInput {
+final class ProfileRouter {
     weak var view: UIViewController?
-    var alertPresenter: AlertPresenterProtocol?
+    let alertPresenter: AlertPresenterServiceProtocol
+    let builder: ProfileBuilder
 
+    init(view: UIViewController? = nil, alertPresenter: AlertPresenterServiceProtocol, builder: ProfileBuilder) {
+        self.view = view
+        self.alertPresenter = alertPresenter
+        self.builder = builder
+    }
+}
+
+extension ProfileRouter: ProfileRouterInput {
     func switchToSplashController() {
         guard let window = UIApplication.shared.windows.first else {
             assertionFailure("Invalid Configuration")
@@ -18,7 +27,7 @@ final class ProfileRouter: ProfileRouterInput {
             return
         }
 
-        let splashViewController = SplashViewController()
+        let splashViewController = builder.splashViewController
         window.rootViewController = splashViewController
 
         UIView.transition(
@@ -43,6 +52,6 @@ final class ProfileRouter: ProfileRouterInput {
         alertModel.successfulCompletion = successfullCompletion
         alertModel.cancelCompletion = cancelCompletion
 
-        alertPresenter?.show(alertModel: alertModel)
+        alertPresenter.show(alertModel: alertModel)
     }
 }

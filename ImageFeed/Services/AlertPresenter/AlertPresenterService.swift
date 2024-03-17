@@ -1,5 +1,5 @@
 //
-//  AlertPresenter.swift
+//  AlertPresenterService.swift
 //  ImageFeed
 //
 //  Created by Олег Аксененко on 02.05.2023.
@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-protocol AlertPresenterProtocol {
+protocol AlertPresenterServiceProtocol {
     var viewController: UIViewController? { get set }
 
     func show(alertModel: AlertModel)
 }
 
-struct AlertPresenter: AlertPresenterProtocol {
+struct AlertPresenterService: AlertPresenterServiceProtocol {
     weak var viewController: UIViewController?
 
     func show(alertModel: AlertModel) {

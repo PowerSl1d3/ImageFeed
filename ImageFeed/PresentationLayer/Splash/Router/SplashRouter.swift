@@ -9,14 +9,23 @@ import UIKit
 import Swinject
 
 final class SplashRouter {
+    var builder: SplashBuilder
+
+    @available(*, deprecated, message: "Следует использовать builder: SplashBuilder")
     var resolver: Resolver!
+
     weak var output: SplashRouterOutput?
     weak var viewController: UIViewController?
+
+    init(builder: SplashBuilder) {
+        self.builder = builder
+    }
 }
 
 extension SplashRouter: SplashRouterInput {
+
     func performAuthorizationFlow() {
-        let authViewController = AuthViewController()
+        let authViewController = builder.authViewController
         authViewController.delegate = self
         authViewController.modalPresentationStyle = .fullScreen
 
@@ -30,7 +39,7 @@ extension SplashRouter: SplashRouterInput {
             return
         }
 
-        let tabBarController = resolver.resolve(TabBarController.self)!
+        let tabBarController = builder.tabBarController
         window.rootViewController = tabBarController
 
         UIView.transition(
